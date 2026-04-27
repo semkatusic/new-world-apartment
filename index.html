@@ -90,58 +90,158 @@
             <div class="stat"><small>Location</small><strong>Downtown Zagreb</strong></div>
           </div>
         </div>
-        <section class="split-section">
-  <img src="images/zagreb-bedroom2.jpg" alt="TV sitting corner and bedroom">
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New World Apartment Downtown Zagreb</title>
 
-  <div class="split-content">
-    <p class="eyebrow">Bedroom & TV Corner</p>
-    <h2>Relax, watch and feel at home</h2>
-    <p>
-      A calm bedroom with a comfortable bed, soft lighting and a cozy TV sitting corner.
-      Perfect for relaxing after a day in Zagreb, watching a movie or simply enjoying a quiet evening.
-    </p>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f7f2eb;
+      color: #222;
+    }
+
+    h1, h2, h3 {
+      margin: 0 0 10px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    /* HERO */
+    .hero {
+      height: 90vh;
+      background: url("images/zagreb-dining.JPG") center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 40px;
+      background: rgba(0,0,0,0.5);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    /* SPLIT SECTIONS */
+    .split {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      margin: 60px 0;
+    }
+
+    .split img {
+      width: 50%;
+      border-radius: 10px;
+    }
+
+    .split-text {
+      width: 50%;
+    }
+
+    .split:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .eyebrow {
+      color: #888;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .split {
+        flex-direction: column;
+      }
+
+      .split img,
+      .split-text {
+        width: 100%;
+      }
+
+      .hero h1 {
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>New World Apartment<br>Downtown Zagreb</h1>
+  </section>
+
+  <div class="container">
+
+    <!-- BEDROOM + TV -->
+    <section class="split">
+      <img src="images/zagreb-bedroom2.JPG" alt="Bedroom TV corner">
+      <div class="split-text">
+        <p class="eyebrow">Bedroom & TV Corner</p>
+        <h2>Relax, watch and feel at home</h2>
+        <p>
+          A calm bedroom with a comfortable bed, soft lighting and a cozy TV sitting corner.
+          Perfect for relaxing after a day in Zagreb, watching a movie or enjoying a quiet evening.
+        </p>
+      </div>
+    </section>
+
+    <!-- KITCHEN -->
+    <section class="split">
+      <img src="images/zagreb-kitchen1.JPG" alt="Kitchen">
+      <div class="split-text">
+        <p class="eyebrow">Kitchen</p>
+        <h2>Fully equipped for your stay</h2>
+        <p>
+          Modern kitchen with coffee machine, microwave, dishwasher and everything you need.
+          Ideal for both short and long stays.
+        </p>
+      </div>
+    </section>
+
+    <!-- DINING -->
+    <section class="split">
+      <img src="images/zagreb-dining.JPG" alt="Dining">
+      <div class="split-text">
+        <p class="eyebrow">Dining Area</p>
+        <h2>A stylish place to unwind</h2>
+        <p>
+          Bright and modern dining space, perfect for breakfast, dinner or a relaxed evening with a glass of wine.
+        </p>
+      </div>
+    </section>
+
+    <!-- BATHROOM -->
+    <section class="split">
+      <img src="images/zagreb-bathroom1.JPG" alt="Bathroom">
+      <div class="split-text">
+        <p class="eyebrow">Bathroom</p>
+        <h2>Clean and modern comfort</h2>
+        <p>
+          Spacious bathroom with walk-in shower, fresh towels and everything needed for a comfortable stay.
+        </p>
+      </div>
+    </section>
+
   </div>
-</section>
 
-<section class="split-section reverse">
-  <img src="images/zagreb-kitchen1.jpg" alt="Kitchen">
-
-  <div class="split-content">
-    <p class="eyebrow">Kitchen</p>
-    <h2>Fully equipped for your stay</h2>
-    <p>
-      The modern kitchen includes everything you need for short or longer stays:
-      coffee machine, dishwasher, microwave, refrigerator, oven, stovetop and kitchenware.
-    </p>
-  </div>
-</section>
-
-<section class="split-section">
-  <img src="images/zagreb-dining.jpg" alt="Dining area">
-
-  <div class="split-content">
-    <p class="eyebrow">Dining Area</p>
-    <h2>A stylish space to slow down</h2>
-    <p>
-      Enjoy breakfast, coffee or dinner in a bright and elegant dining area designed
-      to feel modern, clean and welcoming.
-    </p>
-  </div>
-</section>
-
-<section class="split-section reverse">
-  <img src="images/zagreb-bathroom1.jpg" alt="Bathroom">
-
-  <div class="split-content">
-    <p class="eyebrow">Bathroom</p>
-    <h2>Clean, spacious and refined</h2>
-    <p>
-      A modern bathroom with walk-in shower, towels, hairdryer and warm lighting —
-      created for a fresh and comfortable start into the day.
-    </p>
-  </div>
-</section>
-
+</body>
+</html>
     <section id="gallery" class="split">
       <img src="https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1200&q=80" alt="Kitchen and dining">
       <div class="split-text"><div><p class="eyebrow">Kitchen & dining</p><h3>Everything for an easy stay</h3><p>A fully equipped kitchen, dining area, coffee machine, dishwasher, microwave, refrigerator and cookware make the apartment comfortable for both short stays and longer visits.</p></div></div>
