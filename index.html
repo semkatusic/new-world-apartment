@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>New World Apartment Downtown Zagreb</title>
   <meta name="description" content="New World Apartment Downtown Zagreb – stylish 3-star apartment with direct booking, Wi-Fi, air conditioning, full kitchen and courtyard view." />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root{
       --navy:#071426;
@@ -21,16 +21,19 @@
     body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--cream);color:var(--text)}
     a{text-decoration:none;color:inherit}
     img{max-width:100%;display:block}
-    .nav{position:fixed;top:0;left:0;right:0;z-index:10;background:rgba(7,20,38,.78);backdrop-filter:blur(18px);color:white;border-bottom:1px solid rgba(255,255,255,.12)}
-    .nav-inner{max-width:1200px;margin:auto;padding:18px 26px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-    .brand{font-family:'Cormorant Garamond',serif;font-size:28px;letter-spacing:.02em}
+
+    .nav{position:fixed;top:0;left:0;right:0;z-index:10;background:rgba(7,20,38,.80);backdrop-filter:blur(18px);color:white;border-bottom:1px solid rgba(255,255,255,.12)}
+    .nav-inner{max-width:1200px;margin:auto;padding:14px 26px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand img{height:58px;width:auto;object-fit:contain}
     .nav-links{display:flex;gap:24px;font-size:11px;text-transform:uppercase;letter-spacing:.22em;font-weight:600;align-items:center}
     .nav-links a{opacity:.86}.nav-links a:hover{color:var(--gold);opacity:1}
     .reserve{background:var(--gold);color:var(--navy);padding:13px 18px;border-radius:2px;font-size:11px;text-transform:uppercase;letter-spacing:.22em;font-weight:700}
-    .hero{min-height:100vh;position:relative;background:linear-gradient(90deg,rgba(7,20,38,.62),rgba(7,20,38,.28),rgba(7,20,38,.12)),url('https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;display:flex;align-items:flex-start}
-    .hero-content{max-width:1200px;margin:auto;width:100%;padding:170px 26px 80px;color:white}
-    .hero h1{font-family:Inter,Arial,sans-serif;font-weight:500;max-width:760px;font-size:clamp(32px,5vw,58px);line-height:1.08;letter-spacing:-.03em;margin:0}
+
+    .hero{min-height:100vh;position:relative;background:linear-gradient(90deg,rgba(7,20,38,.62),rgba(7,20,38,.28),rgba(7,20,38,.12)),url('images/zagreb-bedroom2.JPG') center/cover no-repeat;display:flex;align-items:center}
+    .hero-content{max-width:1200px;margin:auto;width:100%;padding:150px 26px 80px;color:white}
+    .hero h1{font-family:Inter,Arial,sans-serif;font-weight:500;max-width:760px;font-size:clamp(32px,5vw,56px);line-height:1.08;letter-spacing:-.03em;margin:0}
     .hero p{margin-top:22px;max-width:520px;color:rgba(255,255,255,.86);line-height:1.7;font-size:16px}
+
     .booking-card{max-width:1080px;margin:-64px auto 0;background:white;position:relative;z-index:2;padding:30px;box-shadow:0 24px 70px rgba(0,0,0,.16)}
     .eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.32em;color:var(--muted);font-weight:700;margin:0 0 10px}
     h2{font-family:'Cormorant Garamond',serif;color:var(--navy);font-size:clamp(38px,4vw,58px);line-height:1;margin:0}
@@ -41,14 +44,29 @@
     button,.btn{border:0;background:var(--navy);color:white;padding:16px 20px;font-size:11px;text-transform:uppercase;letter-spacing:.24em;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px}
     button:hover,.btn:hover{opacity:.92}
     .note{margin-top:18px;background:var(--cream);padding:16px;color:#5c574f;line-height:1.6;font-size:14px}
-    section{padding:92px 26px}.wrap{max-width:1200px;margin:auto}.two{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}.line{height:1px;width:160px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:28px 0}.lead{font-size:18px;line-height:1.85;color:#5b574f}.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:34px}.stat{border-left:2px solid var(--gold);padding-left:16px}.stat small{display:block;color:var(--muted);text-transform:uppercase;letter-spacing:.2em;font-size:10px;font-weight:700}.stat strong{display:block;margin-top:7px;font-size:17px}.photo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.photo-grid img{height:280px;width:100%;object-fit:cover}.photo-grid img:nth-child(2){margin-top:38px}.photo-grid img:nth-child(3){margin-top:-38px}.split{display:grid;grid-template-columns:1fr 1fr}.split img{width:100%;height:560px;object-fit:cover}.split-text{background:var(--sand);display:flex;align-items:center;padding:70px}.split-text p{line-height:1.8;color:#5b574f}.white{background:white}.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.review{background:var(--cream);border:1px solid #e0d8ca;padding:30px}.review p{font-style:italic;line-height:1.75;color:#5b574f}.score{font-family:'Cormorant Garamond',serif;font-size:58px;color:var(--navy)}.host{background:var(--navy);color:white}.host h2{color:white}.host .eyebrow{color:var(--gold)}.host p{color:rgba(255,255,255,.82);line-height:1.85}.host .gold{font-family:'Cormorant Garamond',serif;color:var(--gold);font-size:30px}.amenities{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}.amenity{background:var(--cream);border:1px solid #e0d8ca;padding:16px;color:#55504a}.map{display:grid;grid-template-columns:1fr 1fr;background:var(--sand);padding:0}.map-info{padding:80px}.map iframe{width:100%;height:520px;border:0}.legal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.legal-box{background:var(--cream);border:1px solid #e0d8ca;padding:28px;font-size:14px;line-height:1.7;color:#5b574f}.footer{background:white;border-top:1px solid #e0d8ca;padding:34px 26px}.footer-inner{max-width:1200px;margin:auto;display:flex;justify-content:space-between;gap:20px;align-items:center}.footer-brand{font-family:'Cormorant Garamond',serif;font-size:30px;color:var(--navy)}
-    @media(max-width:900px){.nav-links{display:none}.booking-grid,.two,.split,.map,.legal-grid,.reviews,.amenities{grid-template-columns:1fr}.photo-grid img,.split img{height:360px}.photo-grid img:nth-child(2),.photo-grid img:nth-child(3){margin-top:0}.booking-card{margin:-40px 16px 0}.footer-inner{flex-direction:column;align-items:flex-start}.hero-content{padding-top:140px}}
+
+    section.content{padding:92px 26px}.wrap{max-width:1200px;margin:auto}.two{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}.line{height:1px;width:160px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:28px 0}.lead{font-size:18px;line-height:1.85;color:#5b574f}.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:34px}.stat{border-left:2px solid var(--gold);padding-left:16px}.stat small{display:block;color:var(--muted);text-transform:uppercase;letter-spacing:.2em;font-size:10px;font-weight:700}.stat strong{display:block;margin-top:7px;font-size:17px}
+
+    .split{display:grid;grid-template-columns:1fr 1fr;min-height:560px;background:var(--sand)}
+    .split:nth-of-type(even){direction:rtl}.split:nth-of-type(even) *{direction:ltr}
+    .split img{width:100%;height:560px;object-fit:cover}
+    .split-text{display:flex;align-items:center;padding:70px}.split-text p{line-height:1.8;color:#5b574f}.split-text .eyebrow{color:var(--muted)}
+
+    .amenities-section{background:#fff;padding:92px 26px}.amenities-head{max-width:800px}.amenities-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:38px}.amenity-card{background:var(--cream);border:1px solid #e0d8ca;padding:24px;min-height:140px;display:flex;flex-direction:column;justify-content:space-between;transition:.25s}.amenity-card:hover{transform:translateY(-3px);box-shadow:0 16px 35px rgba(0,0,0,.08)}.amenity-icon{font-size:28px;color:var(--gold);margin-bottom:18px}.amenity-title{font-weight:700;color:var(--navy);margin-bottom:8px}.amenity-text{font-size:14px;line-height:1.6;color:#5b574f;margin:0}
+
+    .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.review{background:var(--cream);border:1px solid #e0d8ca;padding:30px}.review p{font-style:italic;line-height:1.75;color:#5b574f}.score{font-family:'Cormorant Garamond',serif;font-size:58px;color:var(--navy)}.white{background:white}
+
+    .host{background:var(--navy);color:white;padding:92px 26px}.host h2{color:white}.host .eyebrow{color:var(--gold)}.host p{color:rgba(255,255,255,.82);line-height:1.85}.host .gold{font-family:'Cormorant Garamond',serif;color:var(--gold);font-size:30px}.host-photo{width:100%;max-width:420px;border:1px solid rgba(255,255,255,.16);box-shadow:0 24px 70px rgba(0,0,0,.25);object-fit:cover;aspect-ratio:4/5}
+
+    .map{display:grid;grid-template-columns:1fr 1fr;background:var(--sand);padding:0}.map-info{padding:80px}.map iframe{width:100%;height:520px;border:0}.legal-section{padding:92px 26px;background:#fff}.legal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.legal-box{background:var(--cream);border:1px solid #e0d8ca;padding:28px;font-size:14px;line-height:1.7;color:#5b574f}.footer{background:white;border-top:1px solid #e0d8ca;padding:34px 26px}.footer-inner{max-width:1200px;margin:auto;display:flex;justify-content:space-between;gap:20px;align-items:center}.footer-brand img{height:64px;width:auto;object-fit:contain}
+
+    @media(max-width:900px){.nav-links{display:none}.booking-grid,.two,.split,.map,.legal-grid,.reviews,.amenities-grid{grid-template-columns:1fr}.split:nth-of-type(even){direction:ltr}.split img{height:360px}.split-text{padding:42px 24px}.booking-card{margin:-40px 16px 0}.footer-inner{flex-direction:column;align-items:flex-start}.hero-content{padding-top:140px}.brand img{height:48px}.host-photo{max-width:100%}}
   </style>
 </head>
 <body>
   <header class="nav">
     <div class="nav-inner">
-      <a class="brand" href="#top">New World Apartment</a>
+      <a class="brand" href="#top"><img src="images/logo.png" alt="New World Apartment logo"></a>
       <nav class="nav-links">
         <a href="#apartment">Apartment</a><a href="#gallery">Gallery</a><a href="#reviews">Reviews</a><a href="#host">Host</a><a href="#amenities">Amenities</a><a href="#location">Location</a>
       </nav>
@@ -76,7 +94,7 @@
       <div class="note" id="priceNote">Base price: €85/night · Weekly discount: 15% · Monthly price: €1,500 · Check-in 15:00 · Check-out 10:00</div>
     </div>
 
-    <section id="apartment">
+    <section id="apartment" class="content">
       <div class="wrap two">
         <div>
           <p class="eyebrow">The apartment</p>
@@ -90,169 +108,54 @@
             <div class="stat"><small>Location</small><strong>Downtown Zagreb</strong></div>
           </div>
         </div>
-      <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>New World Apartment Downtown Zagreb</title>
-
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f7f2eb;
-      color: #222;
-    }
-
-    h1, h2, h3 {
-      margin: 0 0 10px;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 20px;
-    }
-
-    /* HERO */
-    .hero {
-      height: 90vh;
-      background: url("images/zagreb-dining.JPG") center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: 40px;
-      background: rgba(0,0,0,0.5);
-      padding: 20px;
-      border-radius: 10px;
-    }
-
-    /* SPLIT SECTIONS */
-    .split {
-      display: flex;
-      align-items: center;
-      gap: 40px;
-      margin: 60px 0;
-    }
-
-    .split img {
-      width: 50%;
-      border-radius: 10px;
-    }
-
-    .split-text {
-      width: 50%;
-    }
-
-    .split:nth-child(even) {
-      flex-direction: row-reverse;
-    }
-
-    .eyebrow {
-      color: #888;
-      text-transform: uppercase;
-      font-size: 12px;
-      letter-spacing: 1px;
-    }
-
-    /* MOBILE */
-    @media (max-width: 768px) {
-      .split {
-        flex-direction: column;
-      }
-
-      .split img,
-      .split-text {
-        width: 100%;
-      }
-
-      .hero h1 {
-        font-size: 26px;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-  <!-- HERO -->
-  <section class="hero">
-    <h1>New World Apartment<br>Downtown Zagreb</h1>
-  </section>
-
-  <div class="container">
-
-    <!-- BEDROOM + TV -->
-    <section class="split">
-      <img src="images/zagreb-bedroom2.JPG" alt="Bedroom TV corner">
-      <div class="split-text">
-        <p class="eyebrow">Bedroom & TV Corner</p>
-        <h2>Relax, watch and feel at home</h2>
-        <p>
-          A calm bedroom with a comfortable bed, soft lighting and a cozy TV sitting corner.
-          Perfect for relaxing after a day in Zagreb, watching a movie or enjoying a quiet evening.
-        </p>
+        <div>
+          <img src="images/zagreb-bedroom2.JPG" alt="Bedroom and TV corner" style="width:100%;height:520px;object-fit:cover;box-shadow:0 24px 70px rgba(0,0,0,.14);">
+        </div>
       </div>
     </section>
 
-    <!-- KITCHEN -->
+    <section id="gallery" class="split">
+      <img src="images/zagreb-bedroom2.JPG" alt="TV sitting corner and bedroom">
+      <div class="split-text"><div><p class="eyebrow">Bedroom & TV Corner</p><h3>Relax, watch and feel at home</h3><p>A calm bedroom with a comfortable bed, soft lighting and a cozy TV sitting corner. Perfect for relaxing after a day in Zagreb, watching a movie or simply enjoying a quiet evening.</p></div></div>
+    </section>
+
     <section class="split">
       <img src="images/zagreb-kitchen1.JPG" alt="Kitchen">
-      <div class="split-text">
-        <p class="eyebrow">Kitchen</p>
-        <h2>Fully equipped for your stay</h2>
-        <p>
-          Modern kitchen with coffee machine, microwave, dishwasher and everything you need.
-          Ideal for both short and long stays.
-        </p>
-      </div>
+      <div class="split-text"><div><p class="eyebrow">Kitchen</p><h3>Fully equipped for your stay</h3><p>A modern kitchen with coffee machine, dishwasher, microwave, refrigerator, oven, stovetop and kitchenware — ideal for both short stays and longer visits.</p></div></div>
     </section>
 
-    <!-- DINING -->
     <section class="split">
-      <img src="images/zagreb-dining.JPG" alt="Dining">
-      <div class="split-text">
-        <p class="eyebrow">Dining Area</p>
-        <h2>A stylish place to unwind</h2>
-        <p>
-          Bright and modern dining space, perfect for breakfast, dinner or a relaxed evening with a glass of wine.
-        </p>
-      </div>
-    </section>
-
-    <!-- BATHROOM -->
-    <section class="split">
-      <img src="images/zagreb-bathroom1.JPG" alt="Bathroom">
-      <div class="split-text">
-        <p class="eyebrow">Bathroom</p>
-        <h2>Clean and modern comfort</h2>
-        <p>
-          Spacious bathroom with walk-in shower, fresh towels and everything needed for a comfortable stay.
-        </p>
-      </div>
-    </section>
-
-  </div>
-
-</body>
-</html>
-    <section id="gallery" class="split">
-      <img src="https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1200&q=80" alt="Kitchen and dining">
-      <div class="split-text"><div><p class="eyebrow">Kitchen & dining</p><h3>Everything for an easy stay</h3><p>A fully equipped kitchen, dining area, coffee machine, dishwasher, microwave, refrigerator and cookware make the apartment comfortable for both short stays and longer visits.</p></div></div>
+      <img src="images/zagreb-dining.JPG" alt="Dining area">
+      <div class="split-text"><div><p class="eyebrow">Dining Area</p><h3>A stylish space to slow down</h3><p>Enjoy breakfast, coffee or dinner in a bright and elegant dining area designed to feel modern, clean and welcoming.</p></div></div>
     </section>
 
     <section class="split">
-      <div class="split-text"><div><p class="eyebrow">Bathroom</p><h3>Clean, spacious and calm</h3><p>A modern bathroom with walk-in shower, towels, hairdryer and warm lighting gives the apartment a boutique feeling.</p></div></div>
-      <img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=1200&q=80" alt="Bathroom">
+      <img src="images/zagreb-bathroom1.JPG" alt="Bathroom">
+      <div class="split-text"><div><p class="eyebrow">Bathroom</p><h3>Clean, spacious and refined</h3><p>A modern bathroom with walk-in shower, towels, hairdryer and warm lighting — created for a fresh and comfortable start into the day.</p></div></div>
     </section>
 
-    <section id="reviews" class="white">
+    <section id="amenities" class="amenities-section">
+      <div class="wrap">
+        <div class="amenities-head">
+          <p class="eyebrow">Amenities</p>
+          <h2>Everything you need for a comfortable stay</h2>
+          <div class="line"></div>
+          <p class="lead">Designed for short city breaks, business stays and longer visits — with comfort, style and practical details in mind.</p>
+        </div>
+        <div class="amenities-grid">
+          <div class="amenity-card"><div><div class="amenity-icon">☕</div><div class="amenity-title">Coffee & Tea</div><p class="amenity-text">Coffee machine, kettle and essentials for a relaxed morning.</p></div></div>
+          <div class="amenity-card"><div><div class="amenity-icon">❄️</div><div class="amenity-title">Air Conditioning</div><p class="amenity-text">Comfortable indoor climate during warm Zagreb days.</p></div></div>
+          <div class="amenity-card"><div><div class="amenity-icon">📶</div><div class="amenity-title">Free Wi‑Fi</div><p class="amenity-text">Fast internet throughout the apartment.</p></div></div>
+          <div class="amenity-card"><div><div class="amenity-icon">📺</div><div class="amenity-title">TV Corner</div><p class="amenity-text">Cozy seating area with flat-screen TV for quiet evenings.</p></div></div>
+          <div class="amenity-card"><div><div class="amenity-icon">🍽️</div><div class="amenity-title">Full Kitchen</div><p class="amenity-text">Oven, stovetop, dishwasher, microwave and refrigerator.</p></div></div>
+          <div class="amenity-card"><div><div class="amenity-icon">🚿</div><div class="amenity-title">Walk-in Shower</div><p class="amenity-text">Fresh towels, hairdryer and a spacious modern bathroom.</p></div></div>
+          <div class="amenity-card"><div><div class="amenity-icon">🔑</div><div class="amenity-title">Private Check-in</div><p class="amenity-text">Simple private check-in and check-out for a smooth arrival.</p></div></div>
+          <div class="amenity-card"><div><div class="amenity-icon">🌿</div><div class="amenity-title">Courtyard View</div><p class="amenity-text">A calm residential feeling with garden and courtyard view.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews" class="content white">
       <div class="wrap">
         <p class="eyebrow">Guest experience</p>
         <h2>Loved by guests</h2>
@@ -268,23 +171,15 @@
 
     <section id="host" class="host">
       <div class="wrap two">
-        <div><p class="eyebrow">Meet your host</p><h2>A stay created with care.</h2></div>
+        <div><img class="host-photo" src="images/host-sem.png" alt="Sem, host of New World Apartment"></div>
         <div>
+          <p class="eyebrow">Meet your host</p>
+          <h2>A stay created with care.</h2>
+          <div class="line"></div>
           <p>Hello! I’m Sem – a passionate host, traveler at heart and someone who enjoys creating beautiful, thoughtful spaces where guests feel comfortable from the first moment.</p>
           <p>I care deeply about quality, cleanliness and small details: a comfortable bed, smooth check-in, a good coffee machine and the feeling of being well looked after.</p>
           <p>If you have questions or need local tips for Zagreb, I’m happy to help.</p>
           <p class="gold">Welcome to Zagreb — welcome to your home away from home.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="amenities" class="white">
-      <div class="wrap">
-        <p class="eyebrow">Amenities</p>
-        <h2>Everything you need for a comfortable stay</h2>
-        <div class="line"></div>
-        <div class="amenities">
-          <div class="amenity">Free Wi-Fi</div><div class="amenity">Air conditioning</div><div class="amenity">Flat-screen TV</div><div class="amenity">Non-smoking apartment</div><div class="amenity">Full kitchen</div><div class="amenity">Coffee machine</div><div class="amenity">Dishwasher</div><div class="amenity">Microwave</div><div class="amenity">Refrigerator</div><div class="amenity">Towels & bed linen</div><div class="amenity">Safe</div><div class="amenity">Private check-in/out</div>
         </div>
       </div>
     </section>
@@ -300,7 +195,7 @@
       <iframe title="New World Apartment Map" loading="lazy" src="https://www.google.com/maps?q=%C5%A0ubi%C4%87eva%20ulica%206%2C%20Zagreb&output=embed"></iframe>
     </section>
 
-    <section class="white">
+    <section class="legal-section">
       <div class="wrap legal-grid">
         <div class="legal-box"><h3>Impressum</h3><p>New World Apartment<br>Category: 3 Stars<br>Subiceva ulica 6<br>10000 Zagreb<br>Vl. Stjepan Katusic<br>OIB: 49321293830</p></div>
         <div class="legal-box"><h3>Privacy</h3><p>Personal data is used only to process booking requests and guest communication. Data is not shared with third parties except where required for payment processing, booking management or legal compliance.</p></div>
@@ -309,7 +204,7 @@
     </section>
   </main>
 
-  <footer class="footer"><div class="footer-inner"><div class="footer-brand">New World Apartment</div><div>© New World Apartment · Zagreb</div></div></footer>
+  <footer class="footer"><div class="footer-inner"><div class="footer-brand"><img src="images/logo.png" alt="New World Apartment logo"></div><div>© New World Apartment · Zagreb</div></div></footer>
 
   <script>
     function checkBooking(){
