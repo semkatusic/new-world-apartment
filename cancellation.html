@@ -1,27 +1,21 @@
 <!DOCTYPE html>
-<html lang="de">
-<head>
-<meta charset="UTF-8">
-<title>Stornobedingungen</title>
-</head>
-<body style="font-family:Arial;max-width:800px;margin:40px auto;line-height:1.6">
-
-<h1>Stornobedingungen</h1>
-
-<h2>Kurzaufenthalte (bis 5 Nächte)</h2>
-<p>
-Kostenlose Stornierung bis 24 Stunden vor Anreise möglich.
-</p>
-
-<h2>Längere Aufenthalte (ab 6 Nächten)</h2>
-<p>
-Keine kostenlose Stornierung möglich.
-</p>
-
-<h2>Nichtanreise</h2>
-<p>
-Bei Nichtanreise wird der volle Betrag einbehalten.
-</p>
-
+<html lang="en">
+<head><meta charset="UTF-8"><title>Cancellation</title></head>
+<body style="font-family:Inter,Arial,sans-serif;background:#f7f2e8;margin:0;padding:40px;">
+<div style="max-width:800px;margin:auto;background:white;padding:40px;line-height:1.7;">
+<h1 data-i18n="title">Cancellation Policy</h1>
+<div data-i18n="text"></div>
+<p><a href="index.html">← Back</a></p>
+</div>
+<script>
+const t={
+en:{title:"Cancellation Policy",text:"<h2>Short stays up to 5 nights</h2><p>Free cancellation is possible up to 24 hours before arrival.</p><h2>Longer stays from 7 nights</h2><p>No free cancellation applies unless otherwise agreed in writing.</p><h2>No-show</h2><p>In case of no-show, the full amount may be retained.</p><h2>Platform bookings</h2><p>For Airbnb or Booking.com reservations, the cancellation terms shown on the respective platform apply.</p>"},
+de:{title:"Stornobedingungen / Rücktritt",text:"<h2>Kurzaufenthalte bis 5 Nächte</h2><p>Kostenlose Stornierung ist bis 24 Stunden vor Anreise möglich.</p><h2>Längere Aufenthalte ab 7 Nächten</h2><p>Keine kostenlose Stornierung möglich, sofern nicht schriftlich etwas anderes vereinbart wurde.</p><h2>Nichtanreise</h2><p>Bei Nichtanreise kann der volle Betrag einbehalten werden.</p><h2>Plattformbuchungen</h2><p>Bei Airbnb- oder Booking.com-Buchungen gelten die dort angezeigten Stornobedingungen.</p>"},
+hr:{title:"Uvjeti otkazivanja",text:"<h2>Kratki boravci do 5 noćenja</h2><p>Besplatno otkazivanje moguće je do 24 sata prije dolaska.</p><h2>Dulji boravci od 7 noćenja</h2><p>Besplatno otkazivanje nije moguće, osim ako nije drugačije dogovoreno pisanim putem.</p><h2>Nedolazak</h2><p>U slučaju nedolaska može se zadržati puni iznos.</p><h2>Rezervacije putem platformi</h2><p>Za Airbnb ili Booking.com rezervacije vrijede uvjeti otkazivanja prikazani na toj platformi.</p>"}
+};
+let l=localStorage.getItem("nwa_lang")||localStorage.getItem("lang")||"en";
+document.documentElement.lang=l;
+document.querySelectorAll("[data-i18n]").forEach(e=>e.innerHTML=t[l][e.dataset.i18n]);
+</script>
 </body>
 </html>
