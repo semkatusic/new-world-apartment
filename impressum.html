@@ -1,78 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Imprint</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Inter&display=swap" rel="stylesheet">
-
-<style>
-body{font-family:Inter;background:#f7f2e8;margin:0;padding:40px}
-.container{max-width:800px;margin:auto;background:white;padding:40px}
-h1{font-family:Playfair Display;font-size:40px}
-.lang{position:fixed;top:20px;right:20px}
-.lang button{margin-left:5px}
-</style>
-</head>
-
-<body>
-
-<div class="lang">
-<button onclick="setLang('en')">EN</button>
-<button onclick="setLang('de')">DE</button>
-<button onclick="setLang('hr')">HR</button>
-</div>
-
-<div class="container">
+<head><meta charset="UTF-8"><title>Imprint</title></head>
+<body style="font-family:Inter,Arial,sans-serif;background:#f7f2e8;margin:0;padding:40px;">
+<div style="max-width:800px;margin:auto;background:white;padding:40px;line-height:1.7;">
 <h1 data-i18n="title">Imprint</h1>
-
-<p data-i18n="text"></p>
-
-<a href="index.html">← Back</a>
+<div data-i18n="text"></div>
+<p><a href="index.html">← Back</a></p>
 </div>
-
 <script>
 const t={
-en:{
-title:"Imprint",
-text:`New World Apartment<br>
-Šubićeva 6, 10000 Zagreb<br><br>
-Owner: Stjepan Katusic<br>
-Host: Sem Katusic<br><br>
-Email: ns.apartment9@gmail.com<br>
-Phone: +43 680 1437431<br><br>
-Private rental – no VAT`
-},
-de:{
-title:"Impressum",
-text:`New World Apartment<br>
-Šubićeva 6, 10000 Zagreb<br><br>
-Eigentümer: Stjepan Katusic<br>
-Host: Sem Katusic<br><br>
-Email: ns.apartment9@gmail.com<br>
-Telefon: +43 680 1437431<br><br>
-Privatvermietung – keine Umsatzsteuer`
-},
-hr:{
-title:"Impressum",
-text:`New World Apartment<br>
-Šubićeva 6, Zagreb<br><br>
-Vlasnik: Stjepan Katusic<br>
-Host: Sem Katusic<br><br>
-Email: ns.apartment9@gmail.com<br>
-Telefon: +43 680 1437431<br><br>
-Privatni najam – bez PDV`
-}
-}
-
-function setLang(l){
-localStorage.setItem("lang",l)
-document.querySelector("[data-i18n='title']").innerHTML=t[l].title
-document.querySelector("[data-i18n='text']").innerHTML=t[l].text
-}
-
-setLang(localStorage.getItem("lang")||"en")
+en:{title:"Imprint",text:"<p><strong>New World Apartment</strong><br>Category: 3 Stars<br>Šubićeva ulica 6<br>10000 Zagreb, Croatia</p><p><strong>Owner / private landlord:</strong><br>Stjepan Katusic<br>OIB: 49321293830</p><p><strong>Host & guest communication:</strong><br>Sem Katusic</p><p>Email: ns.apartment9@gmail.com<br>Phone / WhatsApp: +43 680 1437431</p><p>Private rental – no VAT charged.</p>"},
+de:{title:"Impressum",text:"<p><strong>New World Apartment</strong><br>Kategorie: 3 Sterne<br>Šubićeva ulica 6<br>10000 Zagreb, Kroatien</p><p><strong>Eigentümer / Privatvermieter:</strong><br>Stjepan Katusic<br>OIB: 49321293830</p><p><strong>Host & Gästekommunikation:</strong><br>Sem Katusic</p><p>Email: ns.apartment9@gmail.com<br>Telefon / WhatsApp: +43 680 1437431</p><p>Privatvermietung – keine Umsatzsteuer ausgewiesen.</p>"},
+hr:{title:"Impressum",text:"<p><strong>New World Apartment</strong><br>Kategorija: 3 zvjezdice<br>Šubićeva ulica 6<br>10000 Zagreb, Hrvatska</p><p><strong>Vlasnik / privatni iznajmljivač:</strong><br>Stjepan Katusic<br>OIB: 49321293830</p><p><strong>Domaćin i komunikacija:</strong><br>Sem Katusic</p><p>Email: ns.apartment9@gmail.com<br>Telefon / WhatsApp: +43 680 1437431</p><p>Privatni najam – PDV nije obračunat.</p>"}
+};
+let l=localStorage.getItem("nwa_lang")||localStorage.getItem("lang")||"en";
+document.documentElement.lang=l;
+document.querySelectorAll("[data-i18n]").forEach(e=>e.innerHTML=t[l][e.dataset.i18n]);
 </script>
-
 </body>
 </html>
