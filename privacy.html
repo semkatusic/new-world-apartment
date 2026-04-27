@@ -1,41 +1,84 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Datenschutz</title>
+<title>Privacy</title>
+<style>
+body{font-family:Arial;max-width:800px;margin:40px auto;line-height:1.6}
+.lang{position:fixed;top:20px;right:20px}
+.lang button{margin-left:5px;padding:5px 10px}
+</style>
 </head>
-<body style="font-family:Arial;max-width:800px;margin:40px auto;line-height:1.6">
 
-<h1>Datenschutzerklärung</h1>
+<body>
 
-<p>
-Der Schutz Ihrer persönlichen Daten ist uns wichtig. Wir verarbeiten Ihre Daten ausschließlich auf Grundlage der gesetzlichen Bestimmungen (DSGVO).
+<div class="lang">
+  <button onclick="setLang('en')">EN</button>
+  <button onclick="setLang('de')">DE</button>
+  <button onclick="setLang('hr')">HR</button>
+</div>
+
+<h1 data-i18n="title">Privacy Policy</h1>
+
+<p data-i18n="intro">
+We process your data according to GDPR regulations.
 </p>
 
-<h2>Kontaktaufnahme</h2>
-<p>
-Wenn Sie uns per Formular, E-Mail oder WhatsApp kontaktieren, werden Ihre angegebenen Daten zur Bearbeitung Ihrer Anfrage gespeichert.
+<h2 data-i18n="contactTitle">Contact</h2>
+<p data-i18n="contactText">
+If you contact us, your data will be stored.
 </p>
 
-<h2>Buchungen</h2>
-<p>
-Bei Direktbuchungen werden personenbezogene Daten (Name, E-Mail, Aufenthaltsdaten) zur Abwicklung gespeichert.
+<h2 data-i18n="paymentTitle">Payments</h2>
+<p data-i18n="paymentText">
+Payments are processed via Stripe or PayPal.
 </p>
 
-<h2>Zahlungen</h2>
-<p>
-Zahlungen erfolgen über externe Anbieter wie Stripe oder PayPal. Es gelten deren Datenschutzbestimmungen.
+<h2 data-i18n="rightsTitle">Your rights</h2>
+<p data-i18n="rightsText">
+You can request deletion or correction of your data.
 </p>
 
-<h2>Drittanbieter</h2>
-<p>
-Diese Website kann Links zu Airbnb und Booking.com enthalten. Für deren Inhalte und Datenschutz sind diese Anbieter verantwortlich.
-</p>
+<script>
+const t = {
+en:{
+title:"Privacy Policy",
+intro:"We process your data according to GDPR regulations.",
+contactTitle:"Contact",
+contactText:"If you contact us, your data will be stored.",
+paymentTitle:"Payments",
+paymentText:"Payments are processed via Stripe or PayPal.",
+rightsTitle:"Your rights",
+rightsText:"You can request deletion or correction of your data."
+},
+de:{
+title:"Datenschutzerklärung",
+intro:"Wir verarbeiten Ihre Daten gemäß DSGVO.",
+contactTitle:"Kontakt",
+contactText:"Wenn Sie uns kontaktieren, werden Ihre Daten gespeichert.",
+paymentTitle:"Zahlungen",
+paymentText:"Zahlungen erfolgen über Stripe oder PayPal.",
+rightsTitle:"Ihre Rechte",
+rightsText:"Sie können Ihre Daten löschen oder berichtigen lassen."
+},
+hr:{
+title:"Politika privatnosti",
+intro:"Vaši podaci obrađuju se prema GDPR pravilima.",
+contactTitle:"Kontakt",
+contactText:"Ako nas kontaktirate, vaši podaci će biti pohranjeni.",
+paymentTitle:"Plaćanja",
+paymentText:"Plaćanja se vrše putem Stripe ili PayPal sustava.",
+rightsTitle:"Vaša prava",
+rightsText:"Možete zatražiti brisanje ili ispravak podataka."
+}
+};
 
-<h2>Ihre Rechte</h2>
-<p>
-Sie haben jederzeit das Recht auf Auskunft, Berichtigung oder Löschung Ihrer Daten.
-</p>
+function setLang(lang){
+document.querySelectorAll("[data-i18n]").forEach(el=>{
+el.textContent = t[lang][el.dataset.i18n];
+});
+}
+</script>
 
 </body>
 </html>
