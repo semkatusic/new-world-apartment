@@ -1,84 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Privacy</title>
-<style>
-body{font-family:Arial;max-width:800px;margin:40px auto;line-height:1.6}
-.lang{position:fixed;top:20px;right:20px}
-.lang button{margin-left:5px;padding:5px 10px}
-</style>
-</head>
-
-<body>
-
-<div class="lang">
-  <button onclick="setLang('en')">EN</button>
-  <button onclick="setLang('de')">DE</button>
-  <button onclick="setLang('hr')">HR</button>
-</div>
-
+<head><meta charset="UTF-8"><title>Privacy</title></head>
+<body style="font-family:Inter,Arial,sans-serif;background:#f7f2e8;margin:0;padding:40px;">
+<div style="max-width:800px;margin:auto;background:white;padding:40px;line-height:1.7;">
 <h1 data-i18n="title">Privacy Policy</h1>
-
-<p data-i18n="intro">
-We process your data according to GDPR regulations.
-</p>
-
-<h2 data-i18n="contactTitle">Contact</h2>
-<p data-i18n="contactText">
-If you contact us, your data will be stored.
-</p>
-
-<h2 data-i18n="paymentTitle">Payments</h2>
-<p data-i18n="paymentText">
-Payments are processed via Stripe or PayPal.
-</p>
-
-<h2 data-i18n="rightsTitle">Your rights</h2>
-<p data-i18n="rightsText">
-You can request deletion or correction of your data.
-</p>
-
+<div data-i18n="text"></div>
+<p><a href="index.html">← Back</a></p>
+</div>
 <script>
-const t = {
-en:{
-title:"Privacy Policy",
-intro:"We process your data according to GDPR regulations.",
-contactTitle:"Contact",
-contactText:"If you contact us, your data will be stored.",
-paymentTitle:"Payments",
-paymentText:"Payments are processed via Stripe or PayPal.",
-rightsTitle:"Your rights",
-rightsText:"You can request deletion or correction of your data."
-},
-de:{
-title:"Datenschutzerklärung",
-intro:"Wir verarbeiten Ihre Daten gemäß DSGVO.",
-contactTitle:"Kontakt",
-contactText:"Wenn Sie uns kontaktieren, werden Ihre Daten gespeichert.",
-paymentTitle:"Zahlungen",
-paymentText:"Zahlungen erfolgen über Stripe oder PayPal.",
-rightsTitle:"Ihre Rechte",
-rightsText:"Sie können Ihre Daten löschen oder berichtigen lassen."
-},
-hr:{
-title:"Politika privatnosti",
-intro:"Vaši podaci obrađuju se prema GDPR pravilima.",
-contactTitle:"Kontakt",
-contactText:"Ako nas kontaktirate, vaši podaci će biti pohranjeni.",
-paymentTitle:"Plaćanja",
-paymentText:"Plaćanja se vrše putem Stripe ili PayPal sustava.",
-rightsTitle:"Vaša prava",
-rightsText:"Možete zatražiti brisanje ili ispravak podataka."
-}
+const t={
+en:{title:"Privacy Policy",text:"<p>Personal data is processed according to GDPR.</p><h2>Data processed</h2><p>Name, email, phone number, booking dates, payment status and messages may be processed for booking and guest communication.</p><h2>Payments</h2><p>Payments may be processed through Stripe and PayPal. Their privacy policies apply.</p><h2>Platforms</h2><p>Bookings through Airbnb or Booking.com are subject to the privacy policies of those platforms.</p><h2>Your rights</h2><p>You may request access, correction or deletion of your data by contacting ns.apartment9@gmail.com.</p>"},
+de:{title:"Datenschutzerklärung",text:"<p>Personenbezogene Daten werden gemäß DSGVO verarbeitet.</p><h2>Verarbeitete Daten</h2><p>Name, E-Mail, Telefonnummer, Buchungsdaten, Zahlungsstatus und Nachrichten können zur Buchungsabwicklung und Gästekommunikation verarbeitet werden.</p><h2>Zahlungen</h2><p>Zahlungen können über Stripe und PayPal abgewickelt werden. Es gelten deren Datenschutzbestimmungen.</p><h2>Plattformen</h2><p>Buchungen über Airbnb oder Booking.com unterliegen den Datenschutzbestimmungen der jeweiligen Plattform.</p><h2>Ihre Rechte</h2><p>Sie können Auskunft, Berichtigung oder Löschung Ihrer Daten verlangen: ns.apartment9@gmail.com.</p>"},
+hr:{title:"Politika privatnosti",text:"<p>Osobni podaci obrađuju se prema GDPR pravilima.</p><h2>Podaci koji se obrađuju</h2><p>Ime, e-mail, broj telefona, datumi rezervacije, status plaćanja i poruke mogu se obrađivati za rezervacije i komunikaciju s gostima.</p><h2>Plaćanja</h2><p>Plaćanja se mogu obraditi putem Stripea i PayPala. Primjenjuju se njihove politike privatnosti.</p><h2>Platforme</h2><p>Rezervacije putem Airbnb-a ili Booking.com-a podliježu pravilima privatnosti tih platformi.</p><h2>Vaša prava</h2><p>Možete zatražiti pristup, ispravak ili brisanje podataka putem: ns.apartment9@gmail.com.</p>"}
 };
-
-function setLang(lang){
-document.querySelectorAll("[data-i18n]").forEach(el=>{
-el.textContent = t[lang][el.dataset.i18n];
-});
-}
+let l=localStorage.getItem("nwa_lang")||localStorage.getItem("lang")||"en";
+document.documentElement.lang=l;
+document.querySelectorAll("[data-i18n]").forEach(e=>e.innerHTML=t[l][e.dataset.i18n]);
 </script>
-
 </body>
 </html>
