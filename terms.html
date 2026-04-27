@@ -1,39 +1,21 @@
 <!DOCTYPE html>
-<html lang="de">
-<head>
-<meta charset="UTF-8">
-<title>Buchungsbedingungen</title>
-</head>
-<body style="font-family:Arial;max-width:800px;margin:40px auto;line-height:1.6">
-
-<h1>Buchungsbedingungen</h1>
-
-<h2>Allgemeines</h2>
-<p>
-Das New World Apartment wird privat vermietet. Mit der Buchung akzeptiert der Gast diese Bedingungen.
-</p>
-
-<h2>Buchung & Zahlung</h2>
-<p>
-Die Buchung wird erst nach vollständiger Bezahlung bestätigt. Zahlungen erfolgen über Stripe oder PayPal.
-</p>
-
-<h2>Nutzung</h2>
-<ul>
-<li>Rauchen verboten</li>
-<li>Keine Haustiere erlaubt</li>
-<li>Keine Partys oder Veranstaltungen</li>
-</ul>
-
-<h2>Haftung</h2>
-<p>
-Der Gast haftet für Schäden, die während des Aufenthalts entstehen.
-</p>
-
-<h2>Rechnungen</h2>
-<p>
-Rechnungen werden auf Anfrage ausgestellt. Es handelt sich um eine Privatvermietung ohne Umsatzsteuer.
-</p>
-
+<html lang="en">
+<head><meta charset="UTF-8"><title>Booking Terms</title></head>
+<body style="font-family:Inter,Arial,sans-serif;background:#f7f2e8;margin:0;padding:40px;">
+<div style="max-width:800px;margin:auto;background:white;padding:40px;line-height:1.7;">
+<h1 data-i18n="title">Booking Terms</h1>
+<div data-i18n="text"></div>
+<p><a href="index.html">← Back</a></p>
+</div>
+<script>
+const t={
+en:{title:"Booking Terms",text:"<h2>Booking & payment</h2><p>A direct booking is confirmed only after full payment via Stripe or PayPal.</p><h2>Check-in / Check-out</h2><p>Check-in from 15:00. Check-out until 10:00.</p><h2>House rules</h2><ul><li>No smoking</li><li>No pets</li><li>No parties or events</li><li>The apartment may only be used by registered guests</li></ul><h2>Invoices</h2><p>Invoices are issued on request. Private rental – no VAT charged.</p><h2>Platform bookings</h2><p>Bookings through Airbnb or Booking.com are subject to the terms of those platforms.</p>"},
+de:{title:"Buchungsbedingungen / AGB",text:"<h2>Buchung & Zahlung</h2><p>Eine Direktbuchung wird erst nach vollständiger Bezahlung über Stripe oder PayPal bestätigt.</p><h2>Check-in / Check-out</h2><p>Check-in ab 15:00 Uhr. Check-out bis 10:00 Uhr.</p><h2>Hausregeln</h2><ul><li>Rauchen verboten</li><li>Keine Haustiere</li><li>Keine Partys oder Veranstaltungen</li><li>Das Apartment darf nur von angemeldeten Gästen genutzt werden</li></ul><h2>Rechnungen</h2><p>Rechnungen werden auf Anfrage ausgestellt. Privatvermietung – keine Umsatzsteuer ausgewiesen.</p><h2>Plattformbuchungen</h2><p>Für Buchungen über Airbnb oder Booking.com gelten die Bedingungen der jeweiligen Plattform.</p>"},
+hr:{title:"Uvjeti rezervacije",text:"<h2>Rezervacija i plaćanje</h2><p>Direktna rezervacija potvrđuje se tek nakon potpune uplate putem Stripea ili PayPala.</p><h2>Prijava / odjava</h2><p>Prijava od 15:00. Odjava do 10:00.</p><h2>Kućni red</h2><ul><li>Pušenje je zabranjeno</li><li>Kućni ljubimci nisu dozvoljeni</li><li>Zabave i događanja nisu dozvoljeni</li><li>Apartman smiju koristiti samo prijavljeni gosti</li></ul><h2>Računi</h2><p>Računi se izdaju na zahtjev. Privatni najam – PDV nije obračunat.</p><h2>Rezervacije putem platformi</h2><p>Za rezervacije putem Airbnb-a ili Booking.com-a vrijede uvjeti tih platformi.</p>"}
+};
+let l=localStorage.getItem("nwa_lang")||localStorage.getItem("lang")||"en";
+document.documentElement.lang=l;
+document.querySelectorAll("[data-i18n]").forEach(e=>e.innerHTML=t[l][e.dataset.i18n]);
+</script>
 </body>
 </html>
