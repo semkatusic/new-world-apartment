@@ -28,7 +28,46 @@
 <header class="nav"><div class="nav-inner"><a class="brand" href="#top"><img src="images/logo.png" alt="New World Apartment logo"><span class="brand-stars">★★★</span></a><nav class="nav-links"><a href="#apartment" data-i18n="navApartment">Apartment</a><a href="#gallery" data-i18n="navGallery">Gallery</a><a href="#amenities" data-i18n="navAmenities">Amenities</a><a href="#host" data-i18n="navHost">Host</a><a href="#contact" data-i18n="navContact">Contact</a><a href="#location" data-i18n="navLocation">Location</a></nav><div class="nav-right"><div class="lang-switch"><button onclick="setLang('en')">EN</button><button onclick="setLang('de')">DE</button><button onclick="setLang('hr')">HR</button></div><a class="reserve" href="#booking" data-i18n="reserve">Reserve</a></div></div></header>
 <main id="top">
 <section class="hero"><img class="hero-bg" src="images/zagreb-bedroom1.jpg" alt="New World Apartment bedroom"><div class="hero-content"><div class="hero-card"><h1 data-i18n="heroTitle">New World Apartment Downtown</h1><p data-i18n="heroText">A calm, elegant and freshly renovated apartment for a comfortable stay in the heart of Zagreb.</p></div></div></section>
-<div id="booking" class="booking-card"><p class="eyebrow" data-i18n="bookingEyebrow">Direct booking</p><h2 data-i18n="bookingTitle">Reserve your dates</h2><div class="booking-grid"><label><span data-i18n="arrival">Arrival</span><input type="date" id="arrival"></label><label><span data-i18n="departure">Departure</span><input type="date" id="departure"></label><label><span data-i18n="guests">Guests</span><select><option>1</option><option selected>2</option></select></label><button onclick="checkBooking()" data-i18n="checkAvailability">Check availability</button></div><div class="note" id="priceNote" data-i18n="priceNote">Base price: €85/night · Weekly discount: 15% · Monthly price: €1,500 · Check-in 15:00 · Check-out 10:00</div></div>
+<div id="booking" class="booking-card">
+  <p class="eyebrow" data-i18n="bookingEyebrow">Direct booking</p>
+  <h2 data-i18n="bookingTitle">Reserve your dates</h2>
+
+  <div class="booking-grid">
+    <label>
+      <span>Name</span>
+      <input type="text" id="guest_name" placeholder="Your name">
+    </label>
+
+    <label>
+      <span>Email</span>
+      <input type="email" id="guest_email" placeholder="you@email.com">
+    </label>
+
+    <label>
+      <span data-i18n="arrival">Arrival</span>
+      <input type="date" id="arrival">
+    </label>
+
+    <label>
+      <span data-i18n="departure">Departure</span>
+      <input type="date" id="departure">
+    </label>
+
+    <label>
+      <span data-i18n="guests">Guests</span>
+      <select id="guests">
+        <option value="1">1</option>
+        <option value="2" selected>2</option>
+      </select>
+    </label>
+
+    <button onclick="checkBooking()" data-i18n="checkAvailability">Book & Pay</button>
+  </div>
+
+  <div class="note" id="priceNote" data-i18n="priceNote">
+    Base price: €89/night · Weekend: €95 · Summer/December: €120 · Weekly discount: 15% · Monthly price: €1,500
+  </div>
+</div>
 <section id="reviews" class="guest-mini"><div class="guest-mini-inner"><div><p class="eyebrow" data-i18n="reviewsEyebrow">Guest experience</p><p data-i18n="reviewsMini">Loved by guests for comfort, cleanliness and location.</p></div><div class="guest-score">9.8</div><div class="guest-mini-stars">★★★★★</div></div></section>
 <section id="apartment" class="intro"><div class="wrap"><p class="eyebrow" data-i18n="apartmentEyebrow">The apartment</p><h2 data-i18n="apartmentTitle">Designed for quiet comfort and a refined city stay.</h2><div class="line"></div><p class="lead" data-i18n="apartmentText">New World Apartment combines a modern interior with a warm, home-like atmosphere. Soft lighting, a peaceful bedroom, a full kitchen and a spacious bathroom create a stay that feels premium, practical and personal.</p></div></section>
 <section id="gallery" class="split"><img class="split-img" src="images/zagreb-bedroom2.jpg" alt="TV sitting corner and bedroom"><div class="split-text"><div><p class="eyebrow" data-i18n="tvEyebrow">Bedroom & TV Corner</p><h3 data-i18n="tvTitle">Relax, watch and feel at home</h3><p data-i18n="tvText">A calm bedroom with a comfortable bed, soft lighting and a cozy TV sitting corner. Perfect for relaxing after a day in Zagreb, watching a movie or simply enjoying a quiet evening.</p></div></div></section>
@@ -52,13 +91,49 @@ document.addEventListener('DOMContentLoaded',()=>setLang(localStorage.getItem('n
 async function checkBooking(){
   const arrival = document.getElementById('arrival').value;
   const departure = document.getElementById('departure').value;
-  const guestsSelect = document.querySelector('#booking select');
-  const guests = guestsSelect ? guestsSelect.value : 2;
+  const guests = document.getElementById('guests').value;
+  const guest_name = document.getElementById('guest_name').value;
+  const guest_email = document.getElementById('guest_email').value;
   const priceNote = document.getElementById('priceNote');
+  const language = localStorage.getItem('nwa_lang') || localStorage.getItem('lang') || 'en';
+
+  if(!guest_name || !guest_email){
+    priceNote.textContent = 'Please enter your name and email.';
+    return;
+  }
 
   if(!arrival || !departure || new Date(departure) <= new Date(arrival)){
     priceNote.textContent = 'Please select valid arrival and departure dates.';
     return;
+  }
+
+  priceNote.textContent = 'Creating secure payment...';
+
+  try{
+    const response = await fetch('/api/create-checkout-session',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        arrival,
+        departure,
+        guests,
+        guest_name,
+        guest_email,
+        language
+      })
+    });
+
+    const data = await response.json();
+
+    if(data.url){
+      window.location.href = data.url;
+    }else{
+      priceNote.textContent = data.error || 'Payment could not be created.';
+    }
+  }catch(error){
+    priceNote.textContent = 'Payment error. Please try again.';
+  }
+}
   }
 
   priceNote.textContent = 'Creating secure payment...';
