@@ -2,11 +2,46 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Payment successful</title>
+<title>Booking confirmed</title>
+<style>
+body{font-family:Arial;background:#f7f2e8;padding:60px;text-align:center}
+.box{background:white;max-width:700px;margin:auto;padding:40px}
+</style>
 </head>
-<body style="font-family:Arial;background:#f7f2e8;padding:60px;">
-<h1>Payment successful</h1>
-<p>Thank you. Your payment was received. We will confirm your booking shortly.</p>
+<body>
+<div class="box">
+<h1>Booking confirmed ✅</h1>
+<p>Your payment was successful. Your booking is being confirmed.</p>
+<p id="status">Please wait...</p>
 <a href="index.html">Back to website</a>
+</div>
+
+<script>
+async function confirmBooking(){
+  const params = new URLSearchParams(window.location.search);
+  const session_id = params.get("session_id");
+  const status = document.getElementById("status");
+
+  if(!session_id){
+    status.textContent = "Missing payment session.";
+    return;
+  }
+
+  try{
+    const res = await fetch("/api/confirm-booking?session_id=" + session_id);
+    const data = await res.json();
+
+    if(data.success){
+      status.textContent = "Booking saved. Confirmation email sent.";
+    }else{
+      status.textContent = "Booking confirmation error.";
+    }
+  }catch(e){
+    status.textContent = "Connection error.";
+  }
+}
+
+confirmBooking();
+</script>
 </body>
 </html>
