@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cancel Booking</title>
+<style>
+body{font-family:Arial;background:#f7f2e8;padding:60px;text-align:center}
+.box{background:white;max-width:700px;margin:auto;padding:40px;line-height:1.7}
+button{background:#071426;color:white;border:0;padding:14px 26px;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="box">
+<h1>Cancel booking</h1>
+<p id="text">Do you want to cancel your booking?</p>
+<button onclick="cancelBooking()">Confirm cancellation</button>
+<p id="result"></p>
+<a href="index.html">Back to website</a>
+</div>
+
+<script>
+async function cancelBooking(){
+  const params = new URLSearchParams(window.location.search);
+  const booking_id = params.get("booking_id");
+  const token = params.get("token");
+  const result = document.getElementById("result");
+
+  if(!booking_id || !token){
+    result.textContent = "Missing cancellation information.";
+    return;
+  }
+
+  result.textContent = "Processing cancellation...";
+
+  try{
+    const res = await fetch("/api/cancel-booking", {
+      method: "POST",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify({booking_id, token})
+    });
+
+    const data = await res.json();
+
+    if(data.success){
+      result.textContent = "Your booking has been cancelled.";
+    }else{
+      result.textContent = data.error || "Cancellation not possible.";
+    }
+  }catch(e){
+    result.textContent = "Connection error. Please contact the host.";
+  }
+}
+</script>
+</body>
+</html>
