@@ -8,8 +8,8 @@ function parseICalEvents(ics) {
 
     if (startMatch && endMatch) {
       events.push({
-        start: startMatch[1],
-        end: endMatch[1]
+        from: toIso(startMatch[1]),
+        to: subtractOneDay(toIso(endMatch[1]))
       });
     }
   }
@@ -17,23 +17,44 @@ function parseICalEvents(ics) {
   return events;
 }
 
-export default async function handler(req, res) {
-  try {
-    const airbnbUrl = process.env.AIRBNB_ICAL_URL;
-    const bookingUrl = process.env.BOOKING_ICAL_URL;
+function toIso(yyyymmdd) {
+  return `${yyyymmdd.slice(0,4)}-${yyyymmdd.slice(4,6)}-${yyyymmdd.slice(6,8)}`;
+}
 
-    const [airbnbText, bookingText] = await Promise.all([
-      fetch(airbnbUrl).then(r => r.text()),
-      fetch(bookingUrl).then(r => r.text())
+function normalizeDate(value) {
+  return String(value).split("T")[0];
+}
+
+function subtractOneDay(dateStr) {
+  const d = new Date(dateStr + "T12:00:00");
+  d.setDate(d.getDate() - 1);
+  return d.toISOString().split("T")[0];
+}
+
+module.exports = async (req, res) => {
+  try {
+    const [airbnbText, bookingText, directBookings] = await Promise.all([
+      fetch(process.env.AIRBNB_ICAL_URL).then(r => r.text()),
+      fetch(process.env.BOOKING_ICAL_URL).then(r => r.text()),
+      fetch(process.env.GOOGLE_SCRIPT_URL).then(r => r.json())
     ]);
 
-    const events = [
+    const externalEvents = [
       ...parseICalEvents(airbnbText),
       ...parseICalEvents(bookingText)
     ];
 
-    res.status(200).json(events);
+    const directEvents = directBookings
+      .filter(b => b.status === "confirmed")
+      .map(b => ({
+        from: normalizeDate(b.arrival),
+        to: subtractOneDay(normalizeDate(b.departure))
+      }));
+
+    res.setHeader("Cache-Control", "no-store");
+    res.status(200).json([...externalEvents, ...directEvents]);
+
   } catch (error) {
     res.status(500).json({ error: "Availability could not be loaded" });
   }
-}
+};
