@@ -6,8 +6,8 @@ module.exports = async (req, res) => {
     const events = data
       .filter(b => b.status === "confirmed")
       .map(b => {
-        const start = b.arrival.replaceAll("-", "");
-        const end = b.departure.replaceAll("-", "");
+        const start = String(b.arrival).split("T")[0].replaceAll("-", "");
+        const end = String(b.departure).split("T")[0].replaceAll("-", "");
 
         return `
 BEGIN:VEVENT
