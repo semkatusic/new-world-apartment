@@ -61,6 +61,22 @@ module.exports = async (req, res) => {
 
     if (end <= start) return res.status(400).json({ error: "Invalid dates" });
 
+const blockedRes = await fetch(`${req.headers.origin}/api/booked-dates`);
+const blockedDates = await blockedRes.json();
+
+let current = new Date(start);
+
+while (current < end) {
+  const iso = current.toISOString().split("T")[0];
+
+  if (blockedDates.includes(iso)) {
+    return res.status(400).json({
+      error: "Selected dates are not available"
+    });
+  }
+
+  current.setDate(current.getDate() + 1);
+}
     const nights = Math.round((end - start) / (1000 * 60 * 60 * 24));
     const requestedArrival = dateToICal(arrival);
 const requestedDeparture = dateToICal(departure);
