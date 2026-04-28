@@ -1,6 +1,39 @@
 const Stripe = require("stripe");
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
+async function fetchICal(url) {
+  if (!url) return "";
+  const res = await fetch(url);
+  return await res.text();
+}
+
+function parseICalEvents(ics) {
+  const events = [];
+  const blocks = ics.split("BEGIN:VEVENT");
+
+  for (const block of blocks) {
+    const startMatch = block.match(/DTSTART(?:;VALUE=DATE)?:(\d{8})/);
+    const endMatch = block.match(/DTEND(?:;VALUE=DATE)?:(\d{8})/);
+
+    if (startMatch && endMatch) {
+      events.push({
+        start: startMatch[1],
+        end: endMatch[1]
+      });
+    }
+  }
+
+  return events;
+}
+
+function dateToICal(date) {
+  return date.replace(/-/g, "");
+}
+
+function isOverlap(startA, endA, startB, endB) {
+  return startA < endB && endA > startB;
+}
+
 function getNightPrice(date) {
   const d = new Date(date + "T12:00:00");
   const month = d.getMonth() + 1;
@@ -29,6 +62,24 @@ module.exports = async (req, res) => {
     if (end <= start) return res.status(400).json({ error: "Invalid dates" });
 
     const nights = Math.round((end - start) / (1000 * 60 * 60 * 24));
+    const requestedArrival = dateToICal(arrival);
+const requestedDeparture = dateToICal(departure);
+
+const airbnbICal = await fetchICal(process.env.AIRBNB_ICAL_URL);
+const bookingICal = await fetchICal(process.env.BOOKING_ICAL_URL);
+
+const blockedEvents = [
+  ...parseICalEvents(airbnbICal),
+  ...parseICalEvents(bookingICal)
+];
+
+for (const event of blockedEvents) {
+  if (isOverlap(requestedArrival, requestedDeparture, event.start, event.end)) {
+    return res.status(400).json({
+      error: "Selected dates are not available. Please choose another date."
+    });
+  }
+}
     let total = 0;
 
     if (nights >= 28) {
