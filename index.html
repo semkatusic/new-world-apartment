@@ -5,7 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>New World Apartment in Zagreb</title>
   <meta name="description" content="New World Apartment in Zagreb – stylish apartment with direct booking, Wi-Fi, air conditioning, kitchen, bathroom and private check-in." />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+ 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  
   <style>
     :root{--navy:#071426;--cream:#f7f2e8;--cream2:#fbf8f1;--sand:#e8dfcf;--gold:#c9a45c;--text:#141414;--muted:#6b665d;--border:#dfd5c4;--white:#fff}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--cream);color:var(--text)}a{text-decoration:none;color:inherit}img{max-width:100%;display:block}.wrap{max-width:1200px;margin:0 auto;padding:0 26px}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.42em;color:var(--muted);font-weight:700;margin:0 0 18px}.line{height:1px;width:170px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:28px 0}h1,h2,h3{font-family:'Playfair Display',serif;color:var(--navy);font-weight:500;margin:0}h1{font-size:clamp(22px,3vw,36px);line-height:1.45;letter-spacing:.10em;text-transform:uppercase}h2{font-size:clamp(28px,3.4vw,44px);line-height:1.22;letter-spacing:-.01em}h3{font-size:clamp(24px,2.6vw,34px);line-height:1.22}p{font-size:15px;line-height:1.72;color:#444}.lead{font-size:20px;line-height:1.75;color:#47443e;max-width:760px}
@@ -64,7 +68,27 @@
 .legend-booked {
   background: #f5f5f5;
 }
-</style>
+ .calendar-legend{
+  max-width:1080px;
+  margin:18px auto 0;
+  padding:0 30px;
+  display:flex;
+  gap:18px;
+  font-size:13px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:#6b665d;
+}
+.calendar-dot.available{color:#2f7d32}
+.calendar-dot.booked{color:#9f2f2f}
+
+.flatpickr-day.flatpickr-disabled,
+.flatpickr-day.flatpickr-disabled:hover{
+  text-decoration: line-through;
+  color:#aaa !important;
+  background:#f3f0ea !important;
+  cursor:not-allowed;
+}
   </style>
 </head>
 <body>
