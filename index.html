@@ -93,11 +93,12 @@
     .contact-form-box{background:#fff;padding:70px 5vw;border-left:1px solid var(--border)}
     .form-row{display:grid;grid-template-columns:1fr 1fr;gap:22px}
     .contact-form label{display:block}
-    .contact-form input,.contact-form textarea{margin-top:8px}
+    .contact-form input,.contact-form select,.contact-form textarea{margin-top:8px}
     .contact-form textarea{min-height:134px}
     .contact-form .full{grid-column:1/-1}
     .contact-form{display:grid;gap:24px}
     .form-label{font-size:11px;text-transform:uppercase;letter-spacing:.36em;color:#47443e;font-weight:700}
+    .form-note{margin:0;font-size:13px;line-height:1.6;color:#6b665d;background:var(--cream);padding:14px;border:1px solid var(--border)}
 
     .location{display:grid;grid-template-columns:1fr 1fr;background:var(--sand)}
     .location-info{padding:78px 7vw}
@@ -345,36 +346,76 @@
         <p><strong>Address:</strong> Šubićeva ulica 6, Zagreb</p>
 
         <div class="contact-buttons">
-          <a class="btn btn-gold" href="https://wa.me/436801437431" target="_blank">WhatsApp</a>
+          <a class="btn btn-gold" href="https://wa.me/436801437431" target="_blank" rel="noopener">WhatsApp</a>
           <a class="btn btn-outline" href="mailto:ns.apartment9@gmail.com" data-i18n="emailUs">Email us</a>
         </div>
       </div>
 
       <div class="contact-form-box">
-        <form class="contact-form" action="mailto:ns.apartment9@gmail.com" method="post" enctype="text/plain">
+        <form class="contact-form" action="https://formspree.io/f/xaqarajy" method="POST" accept-charset="UTF-8">
+          <input type="hidden" name="apartment" value="New World Apartment Zagreb">
+          <input type="hidden" name="_subject" value="New booking inquiry - New World Apartment Zagreb">
+          <input type="text" name="_gotcha" style="display:none">
+
+          <p class="form-note" data-i18n="requestIntro">
+            Send us your desired travel dates and number of guests. We will reply with availability and further information as soon as possible.
+          </p>
+
           <div class="form-row">
             <label>
               <span class="form-label" data-i18n="firstName">First name</span>
-              <input name="first_name">
+              <input name="first_name" autocomplete="given-name" required>
             </label>
 
             <label>
               <span class="form-label" data-i18n="lastName">Last name</span>
-              <input name="last_name">
+              <input name="last_name" autocomplete="family-name" required>
+            </label>
+          </div>
+
+          <div class="form-row">
+            <label>
+              <span class="form-label">Email</span>
+              <input name="email" type="email" autocomplete="email" required>
+            </label>
+
+            <label>
+              <span class="form-label" data-i18n="phoneWhatsapp">Phone / WhatsApp</span>
+              <input name="phone_whatsapp" type="tel" autocomplete="tel">
+            </label>
+          </div>
+
+          <div class="form-row">
+            <label>
+              <span class="form-label" data-i18n="arrival">Arrival</span>
+              <input name="arrival" type="date" required>
+            </label>
+
+            <label>
+              <span class="form-label" data-i18n="departure">Departure</span>
+              <input name="departure" type="date" required>
             </label>
           </div>
 
           <label class="full">
-            <span class="form-label">Email</span>
-            <input name="email" type="email">
+            <span class="form-label" data-i18n="guests">Number of guests</span>
+            <select name="guests" required>
+              <option value="" data-i18n="pleaseSelect">Please select</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+            </select>
           </label>
 
           <label class="full">
             <span class="form-label" data-i18n="message">Message</span>
-            <textarea name="message"></textarea>
+            <textarea name="message" placeholder="Tell us anything important about your stay."></textarea>
           </label>
 
-          <button type="submit" data-i18n="sendMessage">Send message</button>
+          <p class="form-note" data-i18n="requestNote">
+            This is a booking inquiry, not an automatic reservation. Your stay is only confirmed after we reply to you directly.
+          </p>
+
+          <button type="submit" data-i18n="sendInquiry">Send inquiry</button>
         </form>
       </div>
     </section>
@@ -404,7 +445,7 @@
           </div>
         </div>
 
-        <a class="maps-link" target="_blank" href="https://maps.google.com/?q=Šubićeva+ulica+6,+Zagreb" data-i18n="mapsButton">Open in Google Maps</a>
+        <a class="maps-link" target="_blank" rel="noopener" href="https://maps.google.com/?q=Šubićeva+ulica+6,+Zagreb" data-i18n="mapsButton">Open in Google Maps</a>
       </div>
 
       <iframe class="map-frame" title="New World Apartment Map" loading="lazy" src="https://www.google.com/maps?q=%C5%A0ubi%C4%87eva%20ulica%206%2C%20Zagreb&output=embed"></iframe>
@@ -524,8 +565,15 @@
         emailUs: 'Email us',
         firstName: 'First name',
         lastName: 'Last name',
+        phoneWhatsapp: 'Phone / WhatsApp',
+        arrival: 'Arrival',
+        departure: 'Departure',
+        guests: 'Number of guests',
+        pleaseSelect: 'Please select',
         message: 'Message',
-        sendMessage: 'Send message',
+        sendInquiry: 'Send inquiry',
+        requestIntro: 'Send us your desired travel dates and number of guests. We will reply with availability and further information as soon as possible.',
+        requestNote: 'This is a booking inquiry, not an automatic reservation. Your stay is only confirmed after we reply to you directly.',
 
         locationEyebrow: 'Location',
         locationText: 'Quietly located in a well-connected central neighborhood, the apartment offers quick access to trams, cafés, shops and the city center.',
@@ -631,8 +679,15 @@
         emailUs: 'E-Mail senden',
         firstName: 'Vorname',
         lastName: 'Nachname',
+        phoneWhatsapp: 'Telefon / WhatsApp',
+        arrival: 'Anreise',
+        departure: 'Abreise',
+        guests: 'Anzahl der Gäste',
+        pleaseSelect: 'Bitte auswählen',
         message: 'Nachricht',
-        sendMessage: 'Nachricht senden',
+        sendInquiry: 'Anfrage senden',
+        requestIntro: 'Senden Sie uns Ihre gewünschten Reisedaten und die Anzahl der Gäste. Wir melden uns schnellstmöglich mit Verfügbarkeit und weiteren Informationen.',
+        requestNote: 'Dies ist eine Buchungsanfrage und keine automatische Reservierung. Der Aufenthalt ist erst bestätigt, nachdem wir Ihnen direkt geantwortet haben.',
 
         locationEyebrow: 'Lage',
         locationText: 'Ruhig gelegen in einem gut angebundenen zentralen Viertel bietet das Apartment schnellen Zugang zu Straßenbahnen, Cafés, Geschäften und dem Stadtzentrum.',
@@ -738,8 +793,15 @@
         emailUs: 'Pošalji e-mail',
         firstName: 'Ime',
         lastName: 'Prezime',
+        phoneWhatsapp: 'Telefon / WhatsApp',
+        arrival: 'Dolazak',
+        departure: 'Odlazak',
+        guests: 'Broj gostiju',
+        pleaseSelect: 'Odaberite',
         message: 'Poruka',
-        sendMessage: 'Pošalji poruku',
+        sendInquiry: 'Pošalji upit',
+        requestIntro: 'Pošaljite nam željene datume putovanja i broj gostiju. Javit ćemo vam se što prije s dostupnošću i dodatnim informacijama.',
+        requestNote: 'Ovo je upit za rezervaciju, a ne automatska rezervacija. Boravak je potvrđen tek nakon što vam se izravno javimo.',
 
         locationEyebrow: 'Lokacija',
         locationText: 'Mirno smješten u dobro povezanom centralnom kvartu, apartman nudi brz pristup tramvajima, kafićima, trgovinama i centru grada.',
