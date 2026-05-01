@@ -477,11 +477,72 @@
       aspect-ratio:4/5;
     }
 
+    .rates{
+      background:var(--cream2);
+      padding:92px 26px;
+      border-top:1px solid var(--border);
+      border-bottom:1px solid var(--border);
+      text-align:center;
+    }
+
+    .rates .line{
+      margin:28px auto 34px;
+    }
+
+    .rates-card{
+      max-width:820px;
+      margin:0 auto;
+      background:white;
+      border:1px solid var(--border);
+      padding:44px 38px;
+      box-shadow:0 24px 70px rgba(7,20,38,.06);
+    }
+
+    .rates-title{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(28px,3.2vw,42px);
+      line-height:1.25;
+      color:var(--navy);
+      margin:0 0 22px;
+    }
+
+    .rates-list{
+      list-style:none;
+      padding:0;
+      margin:30px auto;
+      max-width:520px;
+      display:grid;
+      gap:16px;
+      text-align:left;
+    }
+
+    .rates-list li{
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+      font-size:16px;
+      line-height:1.5;
+      color:#46423b;
+    }
+
+    .rates-list li span{
+      color:var(--gold);
+      font-weight:800;
+      min-width:18px;
+    }
+
+    .rates-note{
+      margin:0 auto;
+      max-width:680px;
+      color:#5b574f;
+      font-size:15px;
+      line-height:1.75;
+    }
+
     .contact{
       display:grid;
       grid-template-columns:1fr 1fr;
       background:var(--cream);
-      border-top:1px solid var(--border);
       border-bottom:1px solid var(--border);
     }
 
@@ -690,6 +751,9 @@
       .split-img{height:360px}
       .split-text{padding:44px 26px}
       .amenities-columns{gap:34px}
+      .rates{padding:64px 26px}
+      .rates-card{padding:34px 24px}
+      .rates-list{text-align:left}
       .contact-form-box{border-left:0;border-top:1px solid var(--border)}
       .form-row{grid-template-columns:1fr}
       .map-frame{min-height:420px}
@@ -895,6 +959,24 @@
       </div>
     </section>
 
+    <section id="rates" class="rates">
+      <div class="rates-card">
+        <p class="eyebrow" data-i18n="ratesEyebrow">Direct booking</p>
+        <h2 class="rates-title" data-i18n="ratesTitle">Direct booking rates from €85 per night</h2>
+        <div class="line"></div>
+
+        <ul class="rates-list">
+          <li><span>•</span><strong data-i18n="rateNight">From €85 per night</strong></li>
+          <li><span>•</span><strong data-i18n="rateWeek">7+ nights: up to 15% discount</strong></li>
+          <li><span>•</span><strong data-i18n="rateMonth">Monthly stays from €1,400</strong></li>
+        </ul>
+
+        <p class="rates-note" data-i18n="ratesNote">
+          Final price depends on travel dates, length of stay and availability. Send us your dates and we will reply with a personal offer.
+        </p>
+      </div>
+    </section>
+
     <section id="contact" class="contact">
       <div class="contact-left">
         <p class="eyebrow" data-i18n="contactEyebrow">Contact</p>
@@ -913,10 +995,6 @@
 
       <div class="contact-form-box">
         <form id="contactForm" class="contact-form">
-          <p class="form-note" data-i18n="requestIntro">
-            Send us your desired travel dates and number of guests. We will reply with availability and further information as soon as possible.
-          </p>
-
           <div class="form-row">
             <label>
               <span class="form-label" data-i18n="firstName">First name</span>
@@ -1120,6 +1198,13 @@
         hostText3: 'If you have questions or need local tips for Zagreb, I’m happy to help.',
         hostGold: 'Welcome to Zagreb — welcome to your home away from home.',
 
+        ratesEyebrow: 'Direct booking',
+        ratesTitle: 'Direct booking rates from €85 per night',
+        rateNight: 'From €85 per night',
+        rateWeek: '7+ nights: up to 15% discount',
+        rateMonth: 'Monthly stays from €1,400',
+        ratesNote: 'Final price depends on travel dates, length of stay and availability. Send us your dates and we will reply with a personal offer.',
+
         contactEyebrow: 'Contact',
         contactTitle: 'Get in touch',
         emailUs: 'Email us',
@@ -1132,7 +1217,6 @@
         pleaseSelect: 'Please select',
         message: 'Message',
         sendInquiry: 'Send inquiry by email',
-        requestIntro: 'Send us your desired travel dates and number of guests. We will reply with availability and further information as soon as possible.',
         requestNote: 'This is a booking inquiry, not an automatic reservation. Your stay is only confirmed after we reply to you directly.',
 
         locationEyebrow: 'Location',
@@ -1234,6 +1318,13 @@
         hostText3: 'Wenn du Fragen hast oder Tipps für Zagreb brauchst, helfe ich dir gerne.',
         hostGold: 'Willkommen in Zagreb – willkommen in deinem Zuhause auf Zeit.',
 
+        ratesEyebrow: 'Direktbuchung',
+        ratesTitle: 'Direktbuchung ab 85 € pro Nacht',
+        rateNight: 'Ab 85 € pro Nacht',
+        rateWeek: 'Ab 7 Nächten: bis zu 15% Rabatt',
+        rateMonth: 'Monatsaufenthalte ab 1.400 €',
+        ratesNote: 'Der finale Preis hängt von Reisedatum, Aufenthaltsdauer und Verfügbarkeit ab. Senden Sie uns Ihre Reisedaten und wir melden uns mit einem persönlichen Angebot.',
+
         contactEyebrow: 'Kontakt',
         contactTitle: 'Kontakt aufnehmen',
         emailUs: 'E-Mail senden',
@@ -1246,7 +1337,6 @@
         pleaseSelect: 'Bitte auswählen',
         message: 'Nachricht',
         sendInquiry: 'Anfrage per E-Mail senden',
-        requestIntro: 'Senden Sie uns Ihre gewünschten Reisedaten und die Anzahl der Gäste. Wir melden uns schnellstmöglich mit Verfügbarkeit und weiteren Informationen.',
         requestNote: 'Dies ist eine Buchungsanfrage und keine automatische Reservierung. Der Aufenthalt ist erst bestätigt, nachdem wir Ihnen direkt geantwortet haben.',
 
         locationEyebrow: 'Lage',
@@ -1348,6 +1438,13 @@
         hostText3: 'Ako imate pitanja ili trebate savjete za Zagreb, rado ću pomoći.',
         hostGold: 'Dobrodošli u Zagreb — dobrodošli u svoj dom daleko od doma.',
 
+        ratesEyebrow: 'Direktna rezervacija',
+        ratesTitle: 'Direktna rezervacija od 85 € po noćenju',
+        rateNight: 'Od 85 € po noćenju',
+        rateWeek: 'Od 7 noćenja: do 15% popusta',
+        rateMonth: 'Mjesečni boravci od 1.400 €',
+        ratesNote: 'Konačna cijena ovisi o datumu putovanja, duljini boravka i dostupnosti. Pošaljite nam datume i javit ćemo vam se s osobnom ponudom.',
+
         contactEyebrow: 'Kontakt',
         contactTitle: 'Kontaktirajte nas',
         emailUs: 'Pošalji e-mail',
@@ -1360,7 +1457,6 @@
         pleaseSelect: 'Odaberite',
         message: 'Poruka',
         sendInquiry: 'Pošalji upit e-mailom',
-        requestIntro: 'Pošaljite nam željene datume putovanja i broj gostiju. Javit ćemo vam se što prije s dostupnošću i dodatnim informacijama.',
         requestNote: 'Ovo je upit za rezervaciju, a ne automatska rezervacija. Boravak je potvrđen tek nakon što vam se izravno javimo.',
 
         locationEyebrow: 'Lokacija',
