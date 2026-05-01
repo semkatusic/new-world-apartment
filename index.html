@@ -63,7 +63,7 @@
   }
   </script>
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" />
 
   <style>
     :root{
@@ -332,11 +332,6 @@
       text-align:center;
     }
 
-    button:disabled{
-      opacity:.65;
-      cursor:not-allowed;
-    }
-
     .btn-gold{background:var(--gold);color:var(--navy)}
     .btn-outline{background:transparent;color:var(--navy);border:1px solid var(--navy)}
 
@@ -570,38 +565,6 @@
       background:var(--cream);
       padding:14px;
       border:1px solid var(--border);
-    }
-
-    .form-status{
-      margin:0;
-      font-size:14px;
-      line-height:1.6;
-      padding:16px;
-      border:1px solid var(--border);
-      background:var(--cream2);
-      color:#6b665d;
-      display:none;
-    }
-
-    .form-status.success{
-      display:block;
-      color:#2f4f3f;
-      border-color:#b9cdbb;
-      background:#f3f8f2;
-    }
-
-    .form-status.error{
-      display:block;
-      color:#8a3a2b;
-      border-color:#d7b6ad;
-      background:#fff5f2;
-    }
-
-    .form-status.sending{
-      display:block;
-      color:#6b665d;
-      border-color:var(--border);
-      background:var(--cream2);
     }
 
     .location{
@@ -950,10 +913,6 @@
 
       <div class="contact-form-box">
         <form id="contactForm" class="contact-form">
-          <input type="hidden" name="apartment" value="New World Apartment Zagreb">
-          <input type="hidden" name="_subject" value="New booking inquiry - New World Apartment Zagreb">
-          <input type="text" name="_gotcha" style="display:none">
-
           <p class="form-note" data-i18n="requestIntro">
             Send us your desired travel dates and number of guests. We will reply with availability and further information as soon as possible.
           </p>
@@ -961,42 +920,42 @@
           <div class="form-row">
             <label>
               <span class="form-label" data-i18n="firstName">First name</span>
-              <input name="first_name" autocomplete="given-name" required>
+              <input id="firstName" name="first_name" autocomplete="given-name" required>
             </label>
 
             <label>
               <span class="form-label" data-i18n="lastName">Last name</span>
-              <input name="last_name" autocomplete="family-name" required>
+              <input id="lastName" name="last_name" autocomplete="family-name" required>
             </label>
           </div>
 
           <div class="form-row">
             <label>
               <span class="form-label">Email</span>
-              <input name="email" type="email" autocomplete="email" required>
+              <input id="email" name="email" type="email" autocomplete="email" required>
             </label>
 
             <label>
               <span class="form-label" data-i18n="phoneWhatsapp">Phone / WhatsApp</span>
-              <input name="phone_whatsapp" type="tel" autocomplete="tel">
+              <input id="phoneWhatsapp" name="phone_whatsapp" type="tel" autocomplete="tel">
             </label>
           </div>
 
           <div class="form-row">
             <label>
               <span class="form-label" data-i18n="arrival">Arrival</span>
-              <input name="arrival" type="date" required>
+              <input id="arrival" name="arrival" type="date" required>
             </label>
 
             <label>
               <span class="form-label" data-i18n="departure">Departure</span>
-              <input name="departure" type="date" required>
+              <input id="departure" name="departure" type="date" required>
             </label>
           </div>
 
           <label class="full">
             <span class="form-label" data-i18n="guests">Number of guests</span>
-            <select name="guests" required>
+            <select id="guests" name="guests" required>
               <option value="" data-i18n="pleaseSelect">Please select</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -1005,16 +964,18 @@
 
           <label class="full">
             <span class="form-label" data-i18n="message">Message</span>
-            <textarea name="message" placeholder="Tell us anything important about your stay."></textarea>
+            <textarea id="message" name="message" placeholder="Tell us anything important about your stay."></textarea>
           </label>
 
           <p class="form-note" data-i18n="requestNote">
             This is a booking inquiry, not an automatic reservation. Your stay is only confirmed after we reply to you directly.
           </p>
 
-          <button id="submitButton" type="submit" data-i18n="sendInquiry">Send inquiry</button>
+          <button type="submit" data-i18n="sendInquiry">Send inquiry by email</button>
 
-          <p id="formStatus" class="form-status"></p>
+          <p id="formStatus" class="form-note" style="display:none;">
+            Your email program will open with your booking inquiry. Please send the email to complete your request.
+          </p>
         </form>
       </div>
     </section>
@@ -1170,13 +1131,9 @@
         guests: 'Number of guests',
         pleaseSelect: 'Please select',
         message: 'Message',
-        sendInquiry: 'Send inquiry',
+        sendInquiry: 'Send inquiry by email',
         requestIntro: 'Send us your desired travel dates and number of guests. We will reply with availability and further information as soon as possible.',
         requestNote: 'This is a booking inquiry, not an automatic reservation. Your stay is only confirmed after we reply to you directly.',
-
-        sendingMessage: 'Sending your inquiry...',
-        successMessage: 'Thank you for your request. We will check availability and get back to you as soon as possible.',
-        errorMessage: 'Something went wrong. Please contact us directly by email or WhatsApp.',
 
         locationEyebrow: 'Location',
         locationText: 'Quietly located in a well-connected central neighborhood, the apartment offers quick access to trams, cafés, shops and the city center.',
@@ -1288,13 +1245,9 @@
         guests: 'Anzahl der Gäste',
         pleaseSelect: 'Bitte auswählen',
         message: 'Nachricht',
-        sendInquiry: 'Anfrage senden',
+        sendInquiry: 'Anfrage per E-Mail senden',
         requestIntro: 'Senden Sie uns Ihre gewünschten Reisedaten und die Anzahl der Gäste. Wir melden uns schnellstmöglich mit Verfügbarkeit und weiteren Informationen.',
         requestNote: 'Dies ist eine Buchungsanfrage und keine automatische Reservierung. Der Aufenthalt ist erst bestätigt, nachdem wir Ihnen direkt geantwortet haben.',
-
-        sendingMessage: 'Ihre Anfrage wird gesendet...',
-        successMessage: 'Vielen Dank für Ihre Anfrage. Wir prüfen die Verfügbarkeit und melden uns so schnell wie möglich bei Ihnen.',
-        errorMessage: 'Etwas ist schiefgelaufen. Bitte kontaktieren Sie uns direkt per E-Mail oder WhatsApp.',
 
         locationEyebrow: 'Lage',
         locationText: 'Ruhig gelegen in einem gut angebundenen zentralen Viertel bietet das Apartment schnellen Zugang zu Straßenbahnen, Cafés, Geschäften und dem Stadtzentrum.',
@@ -1406,13 +1359,9 @@
         guests: 'Broj gostiju',
         pleaseSelect: 'Odaberite',
         message: 'Poruka',
-        sendInquiry: 'Pošalji upit',
+        sendInquiry: 'Pošalji upit e-mailom',
         requestIntro: 'Pošaljite nam željene datume putovanja i broj gostiju. Javit ćemo vam se što prije s dostupnošću i dodatnim informacijama.',
         requestNote: 'Ovo je upit za rezervaciju, a ne automatska rezervacija. Boravak je potvrđen tek nakon što vam se izravno javimo.',
-
-        sendingMessage: 'Vaš upit se šalje...',
-        successMessage: 'Hvala na vašem upitu. Provjerit ćemo dostupnost i javiti vam se što je prije moguće.',
-        errorMessage: 'Nešto je pošlo po zlu. Molimo kontaktirajte nas izravno putem e-maila ili WhatsAppa.',
 
         locationEyebrow: 'Lokacija',
         locationText: 'Mirno smješten u dobro povezanom centralnom kvartu, apartman nudi brz pristup tramvajima, kafićima, trgovinama i centru grada.',
@@ -1425,10 +1374,6 @@
         cancelBtn: 'Otkazivanje'
       }
     };
-
-    function getCurrentLang(){
-      return localStorage.getItem('nwa_lang') || localStorage.getItem('lang') || 'en';
-    }
 
     function setLang(lang){
       localStorage.setItem('nwa_lang', lang);
@@ -1449,59 +1394,58 @@
       });
     }
 
-    function showFormStatus(type, message){
-      const status = document.getElementById('formStatus');
-      if(!status) return;
-
-      status.className = 'form-status ' + type;
-      status.textContent = message;
-    }
-
     document.addEventListener('DOMContentLoaded', () => {
-      setLang(getCurrentLang());
+      setLang(localStorage.getItem('nwa_lang') || localStorage.getItem('lang') || 'en');
 
       const form = document.getElementById('contactForm');
-      const submitButton = document.getElementById('submitButton');
 
-      if(!form) return;
+      if(form){
+        form.addEventListener('submit', function(event){
+          event.preventDefault();
 
-      form.addEventListener('submit', async function(event) {
-        event.preventDefault();
+          const firstName = document.getElementById('firstName').value.trim();
+          const lastName = document.getElementById('lastName').value.trim();
+          const email = document.getElementById('email').value.trim();
+          const phoneWhatsapp = document.getElementById('phoneWhatsapp').value.trim();
+          const arrival = document.getElementById('arrival').value;
+          const departure = document.getElementById('departure').value;
+          const guests = document.getElementById('guests').value;
+          const message = document.getElementById('message').value.trim();
 
-        const lang = getCurrentLang();
-        const dict = translations[lang] || translations.en;
+          const subject = 'Booking inquiry - New World Apartment Zagreb';
 
-        showFormStatus('sending', dict.sendingMessage || translations.en.sendingMessage);
+          const body =
+`Hello New World Apartment Zagreb,
 
-        if(submitButton){
-          submitButton.disabled = true;
-        }
+I would like to send a booking inquiry.
 
-        const formData = new FormData(form);
+First name: ${firstName}
+Last name: ${lastName}
+Email: ${email}
+Phone / WhatsApp: ${phoneWhatsapp || '-'}
+Arrival: ${arrival}
+Departure: ${departure}
+Number of guests: ${guests}
 
-        try {
-          const response = await fetch('https://formspree.io/f/xaqarajy', {
-            method: 'POST',
-            body: formData,
-            headers: {
-              'Accept': 'application/json'
-            }
-          });
+Message:
+${message || '-'}
 
-          if(response.ok){
-            form.reset();
-            showFormStatus('success', dict.successMessage || translations.en.successMessage);
-          } else {
-            showFormStatus('error', dict.errorMessage || translations.en.errorMessage);
+Kind regards,
+${firstName} ${lastName}`;
+
+          const mailtoLink =
+            'mailto:ns.apartment9@gmail.com' +
+            '?subject=' + encodeURIComponent(subject) +
+            '&body=' + encodeURIComponent(body);
+
+          const status = document.getElementById('formStatus');
+          if(status){
+            status.style.display = 'block';
           }
-        } catch(error) {
-          showFormStatus('error', dict.errorMessage || translations.en.errorMessage);
-        } finally {
-          if(submitButton){
-            submitButton.disabled = false;
-          }
-        }
-      });
+
+          window.location.href = mailtoLink;
+        });
+      }
     });
   </script>
 </body>
