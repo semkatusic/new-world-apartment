@@ -24,47 +24,66 @@
   <meta name="twitter:image" content="https://www.newworldapartment.com/images/zagreb-bedroom2.jpg" />
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LodgingBusiness",
-    "name": "New World Apartment Zagreb",
-    "url": "https://www.newworldapartment.com/",
-    "image": "https://www.newworldapartment.com/images/zagreb-bedroom2.jpg",
-    "description": "Stylish apartment in Zagreb Donji Grad with Wi-Fi, air conditioning, kitchen, bathroom and private check-in.",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Šubićeva ulica 6",
-      "addressLocality": "Zagreb",
-      "addressCountry": "HR"
+{
+  "@context": "https://schema.org",
+  "@type": [
+    "LodgingBusiness",
+    "Apartment"
+  ],
+  "name": "New World Apartment Zagreb",
+  "url": "https://www.newworldapartment.com/",
+  "image": "https://www.newworldapartment.com/images/zagreb-bedroom2.jpg",
+  "description": "Stylish apartment in Zagreb Donji Grad with Wi-Fi, air conditioning, kitchen, bathroom and private check-in.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Šubićeva ulica 6",
+    "addressLocality": "Zagreb",
+    "addressCountry": "HR"
+  },
+  "telephone": "+436801437431",
+  "email": "ns.apartment9@gmail.com",
+  "amenityFeature": [
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Wi-Fi",
+      "value": true
     },
-    "telephone": "+436801437431",
-    "email": "ns.apartment9@gmail.com",
-    "amenityFeature": [
-      {
-        "@type": "LocationFeatureSpecification",
-        "name": "Wi-Fi",
-        "value": true
-      },
-      {
-        "@type": "LocationFeatureSpecification",
-        "name": "Air conditioning",
-        "value": true
-      },
-      {
-        "@type": "LocationFeatureSpecification",
-        "name": "Kitchen",
-        "value": true
-      },
-      {
-        "@type": "LocationFeatureSpecification",
-        "name": "Private check-in",
-        "value": true
-      }
-    ],
-    "sameAs": [
-      "https://www.newworldapartment.com/"
-    ]
-  }
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Air conditioning",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Kitchen",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Private check-in",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Smart TV",
+      "value": true
+    }
+  ],
+  "sameAs": [],
+  "@id": "https://www.newworldapartment.com/#apartment",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.newworldapartment.com/"
+  },
+  "numberOfRooms": 1,
+  "checkinTime": "15:00",
+  "checkoutTime": "10:00",
+  "availableLanguage": [
+    "en",
+    "de",
+    "hr"
+  ]
+}
   </script>
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" />
@@ -1146,6 +1165,7 @@
       </div>
 
       <div class="footer-legal">
+        <a href="/stay.html">Stay information</a>
         <a href="impressum.html">Impressum</a>
         <a href="privacy.html" data-i18n="privacyBtn">Privacy</a>
         <a href="terms.html" data-i18n="termsBtn">Booking Terms</a>
