@@ -1013,6 +1013,7 @@
 
       <div class="contact-form-box">
         <form id="contactForm" class="contact-form">
+          <div style="position:absolute;left:-9999px" aria-hidden="true"><label>Website<input id="website" name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
           <div class="form-row">
             <label>
               <span class="form-label" data-i18n="firstName">Vorname</span>
@@ -1557,7 +1558,7 @@
 
 
       if(form){
-        form.addEventListener('submit', function(event){
+        form.addEventListener('submit', async function(event){
           event.preventDefault();
           if(arrivalInput && departureInput && (!arrivalInput.value || !departureInput.value || departureInput.value <= arrivalInput.value)){
             departureInput.setCustomValidity('Departure must be after arrival.');
@@ -1601,11 +1602,28 @@ ${firstName} ${lastName}`;
             '&body=' + encodeURIComponent(body);
 
           const status = document.getElementById('formStatus');
-          if(status){
-            status.style.display = 'block';
+          const submitButton = form.querySelector('button[type="submit"]');
+          const originalLabel = submitButton.textContent;
+          submitButton.disabled = true;
+          submitButton.textContent = "Anfrage wird gesendet…";
+          if(status){status.style.display='block';status.textContent="Anfrage wird gesendet…";}
+          try{
+            const response = await fetch('/api/inquiry',{
+              method:'POST',
+              headers:{'Content-Type':'application/json'},
+              body:JSON.stringify({firstName,lastName,email,phone:phoneWhatsapp,arrival,departure,guests,message,website:document.getElementById('website')?.value||''})
+            });
+            const result = await response.json().catch(()=>({}));
+            if(!response.ok || !result.ok)throw new Error('delivery_not_confirmed');
+            if(status)status.textContent="Ihre Anfrage wurde übermittelt. Wir melden uns direkt bei Ihnen.";
+            form.reset();
+          }catch(_){
+            if(status)status.textContent="Der automatische Versand ist nicht verfügbar. Ihr E-Mail-Programm wird geöffnet, damit Sie die Anfrage selbst senden können.";
+            window.location.href = mailtoLink;
+          }finally{
+            submitButton.disabled = false;
+            submitButton.textContent = originalLabel;
           }
-
-          window.location.href = mailtoLink;
         });
       }
     });
