@@ -434,6 +434,8 @@
       background:white;
     }
 
+    .amenities-mobile{display:none}
+
     .amenities-columns{
       display:grid;
       grid-template-columns:repeat(4,1fr);
@@ -460,7 +462,14 @@
 
     /* Compact accommodation features on phones, without hiding useful information. */
     @media(max-width:600px){
-      .amenities{padding:42px 0}
+      .amenities{padding:36px 0}
+      .amenities .line{display:none}
+      .amenities-columns{display:none}
+      .amenities h2{font-size:clamp(24px,6vw,30px)}
+      .amenities-mobile{display:block;margin-top:18px}
+      .amenities-mobile ul{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+      .amenities-mobile li{border:1px solid var(--border);background:var(--cream2);padding:9px 12px;font-size:12px;line-height:1.35;color:var(--navy)}
+      .amenities{padding:36px 0}
       .amenities .line{margin:16px 0}
       .amenities-columns{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 16px;margin-top:22px}
       .amenities-column h4{font-size:10px;letter-spacing:.12em;margin:0 0 12px;line-height:1.5}
@@ -903,6 +912,14 @@
       <div class="wrap">
         <h2 data-i18n="amenitiesTitle">Sve za ugodan boravak</h2>
         <div class="line"></div>
+
+        <div class="amenities-mobile" aria-label="Additional guest information"><ul>
+          <li>Apartman za nepušače</li>
+          <li>Ručnici i posteljina uključeni</li>
+          <li>Račun na zahtjev</li>
+          <li>Jezici: hrvatski, engleski i njemački</li>
+          <li>Nema parkirališta u objektu</li>
+        </ul></div>
 
         <div class="amenities-columns">
           <div class="amenities-column">
