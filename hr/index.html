@@ -1013,6 +1013,7 @@
 
       <div class="contact-form-box">
         <form id="contactForm" class="contact-form">
+          <div style="position:absolute;left:-9999px" aria-hidden="true"><label>Website<input id="website" name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
           <div class="form-row">
             <label>
               <span class="form-label" data-i18n="firstName">Ime</span>
@@ -1557,7 +1558,7 @@
 
 
       if(form){
-        form.addEventListener('submit', function(event){
+        form.addEventListener('submit', async function(event){
           event.preventDefault();
           if(arrivalInput && departureInput && (!arrivalInput.value || !departureInput.value || departureInput.value <= arrivalInput.value)){
             departureInput.setCustomValidity('Departure must be after arrival.');
@@ -1601,11 +1602,28 @@ ${firstName} ${lastName}`;
             '&body=' + encodeURIComponent(body);
 
           const status = document.getElementById('formStatus');
-          if(status){
-            status.style.display = 'block';
+          const submitButton = form.querySelector('button[type="submit"]');
+          const originalLabel = submitButton.textContent;
+          submitButton.disabled = true;
+          submitButton.textContent = "Slanje upita…";
+          if(status){status.style.display='block';status.textContent="Slanje upita…";}
+          try{
+            const response = await fetch('/api/inquiry',{
+              method:'POST',
+              headers:{'Content-Type':'application/json'},
+              body:JSON.stringify({firstName,lastName,email,phone:phoneWhatsapp,arrival,departure,guests,message,website:document.getElementById('website')?.value||''})
+            });
+            const result = await response.json().catch(()=>({}));
+            if(!response.ok || !result.ok)throw new Error('delivery_not_confirmed');
+            if(status)status.textContent="Vaš upit je poslan. Odgovorit ćemo vam izravno.";
+            form.reset();
+          }catch(_){
+            if(status)status.textContent="Automatsko slanje nije dostupno. Otvorit će se vaš program za e-poštu kako biste sami poslali upit.";
+            window.location.href = mailtoLink;
+          }finally{
+            submitButton.disabled = false;
+            submitButton.textContent = originalLabel;
           }
-
-          window.location.href = mailtoLink;
         });
       }
     });
