@@ -7,6 +7,10 @@
   <title>New World Apartment Zagreb | Stylish Apartment in Donji Grad</title>
   <meta name="description" content="New World Apartment Zagreb – stylish apartment in Donji Grad with Wi-Fi, air conditioning, kitchen, private check-in and easy access to Zagreb city center. Send us a booking inquiry by WhatsApp or email." />
   <link rel="canonical" href="https://www.newworldapartment.com/" />
+  <link rel="alternate" hreflang="en" href="https://www.newworldapartment.com/" />
+  <link rel="alternate" hreflang="de" href="https://www.newworldapartment.com/de/" />
+  <link rel="alternate" hreflang="hr" href="https://www.newworldapartment.com/hr/" />
+  <link rel="alternate" hreflang="x-default" href="https://www.newworldapartment.com/" />
 
   <meta property="og:title" content="New World Apartment Zagreb | Stylish Apartment in Donji Grad" />
   <meta property="og:description" content="Stylish apartment in Zagreb with Wi-Fi, air conditioning, kitchen, private check-in and easy access to the city center." />
@@ -194,6 +198,21 @@
 
     .nav-links a{opacity:.84}
     .nav-links a:hover{opacity:1;color:var(--gold)}
+    .menu-toggle{display:none}
+    .nav-links a:focus-visible,.menu-toggle:focus-visible,.lang-switch button:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+    @media(max-width:980px){
+      .nav-inner{flex-wrap:wrap}
+      .menu-toggle{display:inline-flex;background:transparent;border:1px solid rgba(255,255,255,.5);padding:10px 12px;color:#fff;letter-spacing:.06em}
+      .nav-links{display:none;order:3;width:100%;flex-direction:column;align-items:stretch;gap:0;padding:8px 0 12px}
+      .nav-links.is-open{display:flex}
+      .nav-links a{display:block;padding:12px 4px;font-size:13px}
+    }
+
+    .nav-right{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
 
     .nav-right{
       display:flex;
@@ -436,6 +455,16 @@
       margin:0;
       display:grid;
       gap:13px;
+    }
+
+    /* Compact accommodation features on phones, without hiding useful information. */
+    @media(max-width:600px){
+      .amenities{padding:42px 0}
+      .amenities .line{margin:16px 0}
+      .amenities-columns{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 16px;margin-top:22px}
+      .amenities-column h4{font-size:10px;letter-spacing:.12em;margin:0 0 12px;line-height:1.5}
+      .amenities-column ul{gap:7px}
+      .amenities-column li{font-size:12px;line-height:1.35}
     }
 
     .amenities-column li{
@@ -743,7 +772,6 @@
     }
 
     @media(max-width:980px){
-      .nav-links{display:none}
       .brand img{height:48px}
       .hero-card{padding:18px 24px;max-width:90%}
       .split,.amenities-columns,.host-grid,.contact,.location{grid-template-columns:1fr}
@@ -774,7 +802,7 @@
         <span class="brand-stars">★★★</span>
       </a>
 
-      <nav class="nav-links">
+      <nav class="nav-links" id="primary-navigation" aria-label="Main navigation">
         <a href="#apartment" data-i18n="navApartment">Apartment</a>
         <a href="#gallery" data-i18n="navGallery">Gallery</a>
         <a href="#amenities" data-i18n="navAmenities">Amenities</a>
@@ -784,10 +812,11 @@
       </nav>
 
       <div class="nav-right">
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation" aria-controls="primary-navigation" aria-expanded="false">☰ Menu</button>
         <div class="lang-switch">
-          <button type="button" onclick="setLang('en')">EN</button>
-          <button type="button" onclick="setLang('de')">DE</button>
-          <button type="button" onclick="setLang('hr')">HR</button>
+          <button type="button" onclick="location.href='/'">EN</button>
+          <button type="button" onclick="location.href='/de/'">DE</button>
+          <button type="button" onclick="location.href='/hr/'">HR</button>
         </div>
 
         <a class="reserve" href="#contact" data-i18n="reserve">Request</a>
@@ -995,6 +1024,7 @@
 
       <div class="contact-form-box">
         <form id="contactForm" class="contact-form">
+          <div style="position:absolute;left:-9999px" aria-hidden="true"><label>Website<input id="website" name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
           <div class="form-row">
             <label>
               <span class="form-label" data-i18n="firstName">First name</span>
@@ -1491,13 +1521,63 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      setLang(localStorage.getItem('nwa_lang') || localStorage.getItem('lang') || 'en');
+      setLang('en');
+
+      const menuToggle = document.getElementById('menuToggle');
+      const nav = document.getElementById('primary-navigation');
+      if(menuToggle && nav){
+        const closeMenu = () => {
+          nav.classList.remove('is-open');
+          menuToggle.setAttribute('aria-expanded', 'false');
+          menuToggle.setAttribute('aria-label', 'Open navigation');
+        };
+        menuToggle.addEventListener('click', () => {
+          const isOpen = nav.classList.toggle('is-open');
+          menuToggle.setAttribute('aria-expanded', String(isOpen));
+          menuToggle.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+        });
+        nav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+        document.addEventListener('keydown', event => {
+          if(event.key === 'Escape') closeMenu();
+        });
+      }
+
+      const arrivalInput = document.getElementById('arrival');
+      const departureInput = document.getElementById('departure');
+      if(arrivalInput && departureInput){
+        const updateDates = () => {
+          const today = new Date();
+          const year = today.getFullYear();
+          const month = String(today.getMonth()+1).padStart(2,'0');
+          const day = String(today.getDate()).padStart(2,'0');
+          arrivalInput.min = year+'-'+month+'-'+day;
+          if(arrivalInput.value){
+            const next = new Date(arrivalInput.value+'T12:00:00');
+            next.setDate(next.getDate()+1);
+            const minDeparture = next.getFullYear()+'-'+String(next.getMonth()+1).padStart(2,'0')+'-'+String(next.getDate()).padStart(2,'0');
+            departureInput.min = minDeparture;
+          } else {
+            departureInput.min = arrivalInput.min;
+          }
+          departureInput.setCustomValidity(departureInput.value && departureInput.value <= arrivalInput.value ? 'Departure must be after arrival.' : '');
+        };
+        arrivalInput.addEventListener('change',updateDates);
+        departureInput.addEventListener('change',updateDates);
+        updateDates();
+      }
 
       const form = document.getElementById('contactForm');
 
+
+
       if(form){
-        form.addEventListener('submit', function(event){
+        form.addEventListener('submit', async function(event){
           event.preventDefault();
+          if(arrivalInput && departureInput && (!arrivalInput.value || !departureInput.value || departureInput.value <= arrivalInput.value)){
+            departureInput.setCustomValidity('Departure must be after arrival.');
+            departureInput.reportValidity();
+            return;
+          }
 
           const firstName = document.getElementById('firstName').value.trim();
           const lastName = document.getElementById('lastName').value.trim();
@@ -1535,11 +1615,28 @@ ${firstName} ${lastName}`;
             '&body=' + encodeURIComponent(body);
 
           const status = document.getElementById('formStatus');
-          if(status){
-            status.style.display = 'block';
+          const submitButton = form.querySelector('button[type="submit"]');
+          const originalLabel = submitButton.textContent;
+          submitButton.disabled = true;
+          submitButton.textContent = "Sending inquiry…";
+          if(status){status.style.display='block';status.textContent="Sending inquiry…";}
+          try{
+            const response = await fetch('/api/inquiry',{
+              method:'POST',
+              headers:{'Content-Type':'application/json'},
+              body:JSON.stringify({firstName,lastName,email,phone:phoneWhatsapp,arrival,departure,guests,message,website:document.getElementById('website')?.value||''})
+            });
+            const result = await response.json().catch(()=>({}));
+            if(!response.ok || !result.ok)throw new Error('delivery_not_confirmed');
+            if(status)status.textContent="Your inquiry was submitted. We will reply directly.";
+            form.reset();
+          }catch(_){
+            if(status)status.textContent="Automatic delivery is unavailable. Your email program will open so you can send the inquiry yourself.";
+            window.location.href = mailtoLink;
+          }finally{
+            submitButton.disabled = false;
+            submitButton.textContent = originalLabel;
           }
-
-          window.location.href = mailtoLink;
         });
       }
     });
