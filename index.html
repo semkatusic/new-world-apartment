@@ -7,6 +7,10 @@
   <title>New World Apartment Zagreb | Stylish Apartment in Donji Grad</title>
   <meta name="description" content="New World Apartment Zagreb – stylish apartment in Donji Grad with Wi-Fi, air conditioning, kitchen, private check-in and easy access to Zagreb city center. Send us a booking inquiry by WhatsApp or email." />
   <link rel="canonical" href="https://www.newworldapartment.com/" />
+  <link rel="alternate" hreflang="en" href="https://www.newworldapartment.com/" />
+  <link rel="alternate" hreflang="de" href="https://www.newworldapartment.com/de/" />
+  <link rel="alternate" hreflang="hr" href="https://www.newworldapartment.com/hr/" />
+  <link rel="alternate" hreflang="x-default" href="https://www.newworldapartment.com/" />
 
   <meta property="og:title" content="New World Apartment Zagreb | Stylish Apartment in Donji Grad" />
   <meta property="og:description" content="Stylish apartment in Zagreb with Wi-Fi, air conditioning, kitchen, private check-in and easy access to the city center." />
@@ -785,9 +789,9 @@
 
       <div class="nav-right">
         <div class="lang-switch">
-          <button type="button" onclick="setLang('en')">EN</button>
-          <button type="button" onclick="setLang('de')">DE</button>
-          <button type="button" onclick="setLang('hr')">HR</button>
+          <button type="button" onclick="location.href='/'">EN</button>
+          <button type="button" onclick="location.href='/de/'">DE</button>
+          <button type="button" onclick="location.href='/hr/'">HR</button>
         </div>
 
         <a class="reserve" href="#contact" data-i18n="reserve">Request</a>
@@ -1491,7 +1495,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      setLang(localStorage.getItem('nwa_lang') || localStorage.getItem('lang') || 'en');
+      setLang('en');
 
       const form = document.getElementById('contactForm');
 
