@@ -485,6 +485,8 @@
     /* Compact accommodation features on phones, without hiding useful information. */
     @media(max-width:600px){
       #amenities{display:none !important}
+      /* Do not link to a section intentionally hidden on narrow screens. */
+      .nav-links a[href="#amenities"]{display:none}
       .amenities{padding:36px 0}
       .amenities .line{display:none}
       .amenities-columns{display:none}
