@@ -1627,25 +1627,25 @@
           const guests = document.getElementById('guests').value;
           const message = document.getElementById('message').value.trim();
 
-          const subject = 'Booking inquiry - New World Apartment Zagreb';
+          const subject = 'Consulta de disponibilidade - New World Apartment Zagreb';
 
           const body =
-`Hello New World Apartment Zagreb,
+`Olá, equipe do New World Apartment Zagreb,
 
-I would like to send a booking inquiry.
+Gostaria de consultar a disponibilidade para uma hospedagem.
 
-First name: ${firstName}
-Last name: ${lastName}
+Nome: ${firstName}
+Sobrenome: ${lastName}
 Email: ${email}
-Phone / WhatsApp: ${phoneWhatsapp || '-'}
-Arrival: ${arrival}
-Departure: ${departure}
-Number of guests: ${guests}
+Telefone / WhatsApp: ${phoneWhatsapp || '-'}
+Chegada: ${arrival}
+Saída: ${departure}
+Número de hóspedes: ${guests}
 
 Message:
 ${message || '-'}
 
-Kind regards,
+Atenciosamente,
 ${firstName} ${lastName}`;
 
           const mailtoLink =
@@ -1657,8 +1657,8 @@ ${firstName} ${lastName}`;
           const submitButton = form.querySelector('button[type="submit"]');
           const originalLabel = submitButton.textContent;
           submitButton.disabled = true;
-          submitButton.textContent = "Sending inquiry…";
-          if(status){status.style.display='block';status.textContent="Sending inquiry…";}
+          submitButton.textContent = "Enviando consulta…";
+          if(status){status.style.display='block';status.textContent="Enviando consulta…";}
           try{
             const response = await fetch('/api/inquiry',{
               method:'POST',
@@ -1667,10 +1667,10 @@ ${firstName} ${lastName}`;
             });
             const result = await response.json().catch(()=>({}));
             if(!response.ok || !result.ok)throw new Error('delivery_not_confirmed');
-            if(status)status.textContent="Your inquiry was submitted. We will reply directly.";
+            if(status)status.textContent="Sua consulta foi enviada. Responderemos diretamente.";
             form.reset();
           }catch(_){
-            if(status)status.textContent="Automatic delivery is unavailable. Your email program will open so you can send the inquiry yourself.";
+            if(status)status.textContent="O envio automático não está disponível. Seu aplicativo de e-mail será aberto para que você envie a consulta.";
             window.location.href = mailtoLink;
           }finally{
             submitButton.disabled = false;
