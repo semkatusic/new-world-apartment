@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><title>Cancellation</title></head>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cancellation</title></head>
 <body style="font-family:Inter,Arial,sans-serif;background:#f7f2e8;margin:0;padding:40px;">
 <div style="max-width:800px;margin:auto;background:white;padding:40px;line-height:1.7;">
 <h1 data-i18n="title">Cancellation Policy</h1>
 <div data-i18n="text"></div>
-<p><a href="index.html">← Back</a></p>
+<p><a id="backHome" href="/">← Back to homepage</a></p>
 </div>
 <script>
 const t={
@@ -14,8 +14,11 @@ de:{title:"Stornobedingungen / Rücktritt",text:"<h2>Kurzaufenthalte bis 5 Näch
 hr:{title:"Uvjeti otkazivanja",text:"<h2>Kratki boravci do 5 noćenja</h2><p>Besplatno otkazivanje moguće je do 24 sata prije dolaska.</p><h2>Dulji boravci od 6 noćenja</h2><p>Besplatno otkazivanje nije moguće, osim ako nije drugačije dogovoreno pisanim putem.</p><h2>Nedolazak</h2><p>U slučaju nedolaska može se zadržati puni iznos.</p><h2>Rezervacije putem platformi</h2><p>Za Airbnb ili Booking.com rezervacije vrijede uvjeti otkazivanja prikazani na toj platformi.</p>"}
 };
 let l=localStorage.getItem("nwa_lang")||localStorage.getItem("lang")||"en";
-document.documentElement.lang=l;
-document.querySelectorAll("[data-i18n]").forEach(e=>e.innerHTML=t[l][e.dataset.i18n]);
+const supported = Object.prototype.hasOwnProperty.call(t,l) ? l : "en";
+document.documentElement.lang=supported;
+document.querySelectorAll("[data-i18n]").forEach(e=>{const key=e.dataset.i18n;e.innerHTML=t[supported][key]||t.en[key]||"";});
+const home = {"en":"/","de":"/de/","hr":"/hr/","pt-br":"/pt-br/"};
+document.getElementById("backHome").href=home[l]||"/";
 </script>
 </body>
 </html>
