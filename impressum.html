@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><title>Imprint</title></head>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Imprint</title></head>
 <body style="font-family:Inter,Arial,sans-serif;background:#f7f2e8;margin:0;padding:40px;">
 <div style="max-width:800px;margin:auto;background:white;padding:40px;line-height:1.7;">
 <h1 data-i18n="title">Imprint</h1>
 <div data-i18n="text"></div>
-<p><a href="index.html">← Back</a></p>
+<p><a id="backHome" href="/">← Back to homepage</a></p>
 </div>
 <script>
 const t={
@@ -14,8 +14,11 @@ de:{title:"Impressum",text:"<p><strong>New World Apartment</strong><br>Kategorie
 hr:{title:"Impressum",text:"<p><strong>New World Apartment</strong><br>Kategorija: 3 zvjezdice<br>Šubićeva ulica 6<br>10000 Zagreb, Hrvatska</p><p><strong>Vlasnik / privatni iznajmljivač:</strong><br>Stjepan Katusic<br>OIB: 49321293830</p><p><strong>Domaćin i komunikacija:</strong><br>Sem Katusic</p><p>Email: ns.apartment9@gmail.com<br>Telefon / WhatsApp: +43 680 1437431</p><p>Privatni najam – PDV nije obračunat.</p>"}
 };
 let l=localStorage.getItem("nwa_lang")||localStorage.getItem("lang")||"en";
-document.documentElement.lang=l;
-document.querySelectorAll("[data-i18n]").forEach(e=>e.innerHTML=t[l][e.dataset.i18n]);
+const supported = Object.prototype.hasOwnProperty.call(t,l) ? l : "en";
+document.documentElement.lang=supported;
+document.querySelectorAll("[data-i18n]").forEach(e=>{const key=e.dataset.i18n;e.innerHTML=t[supported][key]||t.en[key]||"";});
+const home = {"en":"/","de":"/de/","hr":"/hr/","pt-br":"/pt-br/"};
+document.getElementById("backHome").href=home[l]||"/";
 </script>
 </body>
 </html>
