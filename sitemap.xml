@@ -1,31 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://www.newworldapartment.com/</loc>
-    <lastmod>2026-10-29</lastmod>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://www.newworldapartment.com/de/</loc>
-    <lastmod>2026-10-29</lastmod>
-  </url>
-  <url>
-    <loc>https://www.newworldapartment.com/hr/</loc>
-    <lastmod>2026-10-29</lastmod>
-  </url>
-  <url>
-    <loc>https://www.newworldapartment.com/impressum.html</loc>
-    <lastmod>2026-04-29</lastmod>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://www.newworldapartment.com/privacy.html</loc>
-    <lastmod>2026-04-29</lastmod>
-    <priority>0.3</priority>
-  </url>
-  <url><loc>https://www.newworldapartment.com/terms.html</loc></url>
-  <url><loc>https://www.newworldapartment.com/cancellation.html</loc></url>
+  <url><loc>https://www.newworldapartment.com/</loc><lastmod>2026-11-02</lastmod></url>
+  <url><loc>https://www.newworldapartment.com/de/</loc><lastmod>2026-11-02</lastmod></url>
+  <url><loc>https://www.newworldapartment.com/hr/</loc><lastmod>2026-11-02</lastmod></url>
+  <url><loc>https://www.newworldapartment.com/pt-br/</loc><lastmod>2026-11-02</lastmod></url>
   <url><loc>https://www.newworldapartment.com/stay.html</loc></url>
   <url><loc>https://www.newworldapartment.com/de/aufenthalt.html</loc></url>
   <url><loc>https://www.newworldapartment.com/hr/boravak.html</loc></url>
-<url><loc>https://www.newworldapartment.com/pt-br/</loc></url><url><loc>https://www.newworldapartment.com/pt-br/estadia.html</loc></url></urlset>
+  <url><loc>https://www.newworldapartment.com/pt-br/estadia.html</loc></url>
+  <url><loc>https://www.newworldapartment.com/impressum.html</loc></url>
+  <url><loc>https://www.newworldapartment.com/privacy.html</loc></url>
+  <url><loc>https://www.newworldapartment.com/terms.html</loc></url>
+  <url><loc>https://www.newworldapartment.com/cancellation.html</loc></url>
+</urlset>
