@@ -761,9 +761,9 @@
       max-width:1200px;
       margin:auto;
       display:grid;
-      grid-template-columns:1fr auto 1fr;
+      grid-template-columns:minmax(0,1fr) minmax(0,2fr) minmax(0,1fr);
       align-items:center;
-      gap:20px;
+      gap:24px;
     }
 
     .footer-brand{
@@ -794,7 +794,9 @@
       color:#6b665d;
     }
 
-    .footer-legal a{color:#6b665d}
+    .footer-legal a{color:#6b665d;overflow-wrap:normal}
+    .footer-brand{min-width:0;white-space:nowrap}
+    .footer-legal{min-width:0;letter-spacing:.09em;column-gap:14px;row-gap:12px}
     .footer-legal a:hover{color:var(--gold)}
 
     .footer-copy{
@@ -1165,7 +1167,7 @@
       </div>
 
       <div class="footer-legal">
-        <a href="/pt-br/estadia.html">Informações sobre a estadia</a>
+        <a href="/pt-br/estadia.html">Informações da estadia</a>
         <a href="/impressum.html?lang=pt-br">Informações legais</a>
         <a href="/privacy.html?lang=pt-br" data-i18n="privacyBtn">Privacidade</a>
         <a href="/terms.html?lang=pt-br" data-i18n="termsBtn">Termos da reserva</a>
