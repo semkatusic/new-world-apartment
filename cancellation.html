@@ -9,17 +9,20 @@
 </div>
 <script>
 const t={
-pt-br:{title:"Política de cancelamento para reservas diretas",text:"<p>Estas condições se aplicam às reservas acordadas diretamente com o New World Apartment.</p><h2>Estadias de até 5 noites</h2><p>O cancelamento é gratuito até 24 horas antes da chegada.</p><h2>Estadias a partir de 6 noites</h2><p>Não há cancelamento gratuito, salvo acordo diferente por escrito.</p><h2>Não comparecimento</h2><p>Em caso de não comparecimento, o valor total da reserva poderá ser retido.</p>"},
+"pt-br":{title:"Política de cancelamento para reservas diretas",text:"<p>Estas condições se aplicam às reservas acordadas diretamente com o New World Apartment.</p><h2>Estadias de até 5 noites</h2><p>O cancelamento é gratuito até 24 horas antes da chegada.</p><h2>Estadias a partir de 6 noites</h2><p>Não há cancelamento gratuito, salvo acordo diferente por escrito.</p><h2>Não comparecimento</h2><p>Em caso de não comparecimento, o valor total da reserva poderá ser retido.</p>"},
 en:{title:"Cancellation Policy for Direct Bookings",text:"<p>These conditions apply to reservations agreed directly with New World Apartment.</p><h2>Short stays up to 5 nights</h2><p>Free cancellation is possible up to 24 hours before arrival.</p><h2>Longer stays from 6 nights</h2><p>No free cancellation applies unless otherwise agreed in writing.</p><h2>No-show</h2><p>In case of no-show, the full amount may be retained.</p>"},
 de:{title:"Stornobedingungen für Direktbuchungen",text:"<p>Diese Bedingungen gelten für Buchungen, die direkt mit New World Apartment vereinbart werden.</p><h2>Kurzaufenthalte bis 5 Nächte</h2><p>Kostenlose Stornierung ist bis 24 Stunden vor Anreise möglich.</p><h2>Längere Aufenthalte ab 6 Nächten</h2><p>Keine kostenlose Stornierung möglich, sofern nicht schriftlich etwas anderes vereinbart wurde.</p><h2>Nichtanreise</h2><p>Bei Nichtanreise kann der volle Betrag einbehalten werden.</p>"},
 hr:{title:"Uvjeti otkazivanja za izravne rezervacije",text:"<p>Ovi uvjeti vrijede za rezervacije dogovorene izravno s New World Apartmentom.</p><h2>Kratki boravci do 5 noćenja</h2><p>Besplatno otkazivanje moguće je do 24 sata prije dolaska.</p><h2>Dulji boravci od 6 noćenja</h2><p>Besplatno otkazivanje nije moguće, osim ako nije drugačije dogovoreno pisanim putem.</p><h2>Nedolazak</h2><p>U slučaju nedolaska može se zadržati puni iznos.</p>"}
 };
-let l=localStorage.getItem("nwa_lang")||localStorage.getItem("lang")||"en";
+const urlLang=new URLSearchParams(window.location.search).get("lang");
+let l=urlLang||localStorage.getItem("nwa_lang")||localStorage.getItem("lang")||"en";
 const supported = Object.prototype.hasOwnProperty.call(t,l) ? l : "en";
 document.documentElement.lang=supported;
 document.querySelectorAll("[data-i18n]").forEach(e=>{const key=e.dataset.i18n;e.innerHTML=t[supported][key]||t.en[key]||"";});
 const home = {"en":"/","de":"/de/","hr":"/hr/","pt-br":"/pt-br/"};
 document.getElementById("backHome").href=home[l]||"/";
+if(l==="pt-br")document.getElementById("backHome").textContent="← Voltar à página inicial";
+document.title=t[supported].title;
 </script>
 </body>
 </html>
