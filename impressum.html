@@ -14,7 +14,8 @@ en:{title:"Imprint",text:"<p><strong>New World Apartment</strong><br>Category: 3
 de:{title:"Impressum",text:"<p><strong>New World Apartment</strong><br>Kategorie: 3 Sterne<br>Šubićeva ulica 6<br>10000 Zagreb, Kroatien</p><p><strong>Eigentümer / Privatvermieter:</strong><br>Stjepan Katusic<br>OIB: 49321293830</p><p><strong>Host & Gästekommunikation:</strong><br>Sem Katusic</p><p>Email: ns.apartment9@gmail.com<br>Telefon / WhatsApp: +43 680 1437431</p><p>Privatvermietung – keine Umsatzsteuer ausgewiesen.</p>"},
 hr:{title:"Impressum",text:"<p><strong>New World Apartment</strong><br>Kategorija: 3 zvjezdice<br>Šubićeva ulica 6<br>10000 Zagreb, Hrvatska</p><p><strong>Vlasnik / privatni iznajmljivač:</strong><br>Stjepan Katusic<br>OIB: 49321293830</p><p><strong>Domaćin i komunikacija:</strong><br>Sem Katusic</p><p>Email: ns.apartment9@gmail.com<br>Telefon / WhatsApp: +43 680 1437431</p><p>Privatni najam – PDV nije obračunat.</p>"}
 };
-let l=localStorage.getItem("nwa_lang")||localStorage.getItem("lang")||"en";
+const urlLang=new URLSearchParams(window.location.search).get("lang");
+let l=urlLang||localStorage.getItem("nwa_lang")||localStorage.getItem("lang")||"en";
 const supported = Object.prototype.hasOwnProperty.call(t,l) ? l : "en";
 document.documentElement.lang=supported;
 document.querySelectorAll("[data-i18n]").forEach(e=>{const key=e.dataset.i18n;e.innerHTML=t[supported][key]||t.en[key]||"";});
